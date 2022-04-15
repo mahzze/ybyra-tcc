@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Send+Flowers&display=swap');
+
+.navbar-brand{
+    font-family: 'Send Flowers', cursive;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.logo{
+    height: 7vh;
+    width: 7vh;
+}
+
+.modal-fullscreen{
+    max-width: 40vw;
+}
+
+
+.logo-modal{
+    min-width: 40px;
+    min-height: 40px;
+    max-height: 20vh;
+    max-width: 20vh;
+}
+
+.modal-btn-green, .modal-btn-green:hover{
+    color: #fff;
+    background-color: var(--bs-green);
+}
+
+.modal-footer{
+    color: var(--bs-green);
+}
+
+.user{
+    height: 5rem;
+    width: 5rem;
+}
