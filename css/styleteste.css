@@ -1,0 +1,36 @@
+
+*{
+    margin: 0 auto;
+    padding:0;
+    box-sizing:border-box;
+}
+
+#menu-h ul{
+    list-style: none;
+    padding:0;
+    background-color: chartreuse;
+}
+
+#menu-h ul li{
+    display: inline;
+    font-family:'Courier New', Courier, monospace;
+    
+
+}
+
+#menu-h ul li a{
+    color:black;
+    display: inline-block;
+    text-decoration: none;
+    padding: 20px;
+    transition: all .3s;
+    align-items:center;
+
+}
+
+
+#menu-h ul li a:hover{
+    background-color:aqua;
+
+
+}
