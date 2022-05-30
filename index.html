@@ -17,7 +17,7 @@
 </head>
 <body>
    
-  <!-- Navbar, o retangulo cinza q tá na parte de cima da tela com o ybyra e com o botao do modal -->
+    <!-- Navbar, o retangulo cinza q tá na parte de cima da tela com o ybyra e com o botao do modal -->
     <nav class="navbar navbar-light bg-light ps-4 pe-4">
         <section class="container-fluid">
             <span class="navbar-brand mb-0 p-3">Ybyrá</span>
@@ -31,7 +31,7 @@
     </nav>
 
   
-  <!-- Modal, o menu q aparece quando clica no icone das barrinhas-->
+    <!-- Modal, o menu q aparece quando clica no icone das barrinhas-->
     <section class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
         <section class="modal-dialog modal-fullscreen">
             <section class="modal-content">
@@ -41,18 +41,21 @@
                     <img class="logo-modal rounded-circle" src="assets/logo.jpg" alt="logo">
                 </section>
             </section>
-            
+            <!-- 
+                Criar um componente react que faça a verificação do login do usuario para mostrar conteudos diferentes
+                uma boa forma de fazer isso é usando sessions
+            -->
             <section class="modal-body text-center container-fluid">
                 <section class="container row gap-2">
-                    <a href="#" class="btn btn-lg modal-btn-green rounded-pill">Lorem</a>
-                    <a href="#" class="btn btn-lg modal-btn-green rounded-pill">Lorem</a>
+                    <a href="cadastro.html" class="btn btn-lg modal-btn-green rounded-pill">Registrar-se</a>
+                    <a href="login.html" class="btn btn-lg modal-btn-green rounded-pill">Fazer login</a>
                     <a href="#" class="btn btn-lg modal-btn-green rounded-pill">Lorem</a>
                     <a href="#" class="btn btn-lg modal-btn-green rounded-pill">Lorem</a>
                     <a href="#" class="btn btn-lg modal-btn-green rounded-pill">Lorem</a>
                 </section>
             </section>
             
-            <section class="modal-footer p-4 ">
+            <section class="modal-footer p-4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum recusandae fugit dolor tempora.
                 Vero veritatis, aliquid quas sit illum earum nemo sapiente placeat pariatur omnis aspernatur,
                 tenetur tempore quam rem.
@@ -61,8 +64,10 @@
         </section>
     </section>
 
-  <!-- Main, a parte onde o conteudo da página fica, não é BS, é só HTML5 básico q a etec n ensinou. 
-    A proposito: header, section, main e footer são o msm q <div>, e <article> = <p> -->
+    <!--
+    Main, a parte onde o conteudo da página fica, não é BS, é só HTML5 básico q a etec n ensinou. 
+    A proposito: header, section, main e footer são o msm q <div>, e <article> = <p> 
+    -->
     <main class="container p-3">
         <section class="p-4 row row-cols-2 mt-5 rounded-pill bg-light">
             <div class="col-1">
