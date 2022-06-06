@@ -15,4 +15,5 @@
 
 ----------
 # Desenvolvimento do 1
-> Estado atual: iniciado.
+ Estado atual: iniciado.
+ Objetivos: A definir.
