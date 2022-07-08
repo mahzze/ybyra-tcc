@@ -1,4 +1,4 @@
-import logo from './assets/logo.svg';
+import {useCase} from 'react'
 import './App.css';
 
 function App() {
