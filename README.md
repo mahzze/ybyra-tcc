@@ -11,4 +11,3 @@
 >> 1. Criar o backend da aplicação;
 >> 2. Adicionar funcionalidades básicas;
 >> 3. Adicionar funcionalidades complexas;
->> 4. Conseguir o apoio de uma ONG.
