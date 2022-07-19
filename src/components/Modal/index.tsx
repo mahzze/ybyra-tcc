@@ -1,17 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './Modal.css'
-import {useSpring, animated} from 'react-spring'
+import {motion} from 'framer-motion'
+
+import './styles.css'
+
+const animation = {
+   hidden: {
+      y: '-100vh',
+      opacity: 0
+   },
+   visible: {
+      y: '0',
+      opacity: 1
+   },
+   exit: {
+      y: '100vh',
+      opacity: 0
+   }
+}
 
 //tentei fazer o modal ser : null|JSX.Element mas falhei, dps arrumo isso
 const Modal: any = ({open, onClose}: { open: boolean , onClose: (() => void)}) => {
-   
-   
-   const animation = useSpring({
-     // transition: '700ms ',
-      transform: open? 'translate(50%,50%)' : 'translate(-100%,100)'
-   })
-   
+
    if(!open) return null
    const container  = document.getElementById("portal")
 
@@ -19,17 +29,23 @@ const Modal: any = ({open, onClose}: { open: boolean , onClose: (() => void)}) =
    : ReactDOM.createPortal(
       <>
          <div className="overlayDiv">
-            <animated.div style={animation}>
-            <div className="Modal" onMouseLeave={onClose}>
+            <motion.div 
+               className="Modal" 
+               onMouseLeave={onClose}
+               variants={animation}
+            >
                <div>
-                  <button > Fechar </button>
+                  <motion.button
+                     whileHover={{scale: 1.1}}
+                     whileTap={{scale: 0.9}}
+                     onClick={onClose}
+                  > Fechar </motion.button>
                </div>
                <div>
                   <img src='../assets/logo.svg' alt='foto de perfil' className='userModal'/>
                </div>
                <div></div>
-            </div>
-            </animated.div>
+            </motion.div>
          </div>
       </>,
       container
