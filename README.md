@@ -10,3 +10,7 @@ Se eu não continuar desenvolvendo o projeto dentro de uma semana, considerem qu
 
 ---  
 ~ mah
+
+Run the project
+- yarn -- no diretório geral
+- yarn start -- também no dir. geral
