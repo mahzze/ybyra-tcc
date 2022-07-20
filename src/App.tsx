@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 import Modal from './components/Modal';
@@ -32,10 +33,17 @@ export default function App() {
 			  	</button>
 			</section>
 		 </nav>
-		 <Modal 
-			open={isModalOpen}
-			onClose={() => setIsModalOpen(false)}
-		 />
+		<AnimatePresence
+			initial={false}
+			exitBeforeEnter={true}
+			onExitComplete={() => null}
+		>
+			{isModalOpen && 
+			<Modal 
+				open={isModalOpen}
+				onClose={() => setIsModalOpen(false)}
+			/>}
+		</AnimatePresence>
 	  </div>
 	);
  }
