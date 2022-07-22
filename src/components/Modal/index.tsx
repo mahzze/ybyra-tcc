@@ -4,20 +4,17 @@ import {motion} from 'framer-motion'
 
 import './styles.css'
 
-const appearence = {
-   
-   visible: {
-      x: '0',
-      opacity: 1,
-      transition:{
-         duration: 0.2,
-         type: "Spring",
-         damping: 25,
-         stiffness:600
-      }
-   },
+const animation = {
    hidden: {
-      x: '100vh',
+      y: '-100vh',
+      opacity: 0
+   },
+   visible: {
+      y: '0',
+      opacity: 1
+   },
+   exit: {
+      y: '100vh',
       opacity: 0
    }
 }
@@ -35,10 +32,7 @@ const Modal: any = ({open, onClose}: { open: boolean , onClose: (() => void)}) =
             <motion.div 
                className="Modal" 
                onMouseLeave={onClose}
-               variants={appearence}
-               initial="hidden"
-               animate="visible"
-               exit="hidden"
+               variants={animation}
             >
                <div>
                   <motion.button

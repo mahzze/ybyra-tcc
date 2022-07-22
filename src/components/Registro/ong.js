@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import './style.css';
 
 export default function Registro() {
   const [nomeOng, setNomeOng] = useState("");
   const [enderecoOng, setEnderecoOng] = useState("");
   const [telefoneOng, setTelefoneOng] = useState(0);
   const [emailOng, setEmailOng] = useState("");
-  const [senhaOng, setSenhaOngX] = useState("");
+  const [senhaOng, setSenhaOng] = useState("");
 
   const registroOng = () => {
     Axios.post("http://localhost:3000/registroOng", {
@@ -22,7 +23,6 @@ export default function Registro() {
  
   return (
     <div className="Registro">
-
       <div className="inputs">
         <label>Nome da Organização</label>
         <input type="text" onChange={(event) => (setNomeOng(event.target.value))} /> 
@@ -45,3 +45,12 @@ export default function Registro() {
     </div>
   );
 }
+
+/* 
+<><Router>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/registro" element={<Registro />} />
+			</Routes>
+		</Router></>
+    */

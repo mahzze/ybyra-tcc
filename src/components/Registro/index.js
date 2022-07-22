@@ -16,7 +16,7 @@ const db = mysql.createConnection({
 app.post('/registroOng', (request, response) => {
     const nomeOng = request.body.nomeOng;
     const enderecoOng = request.body.enderecoOng;
-    const telefoneOng = Number(request.body.telefoneOng);
+    const telefoneOng = request.body.telefoneOng;
     const emailOng = request.body.emailOng;
     const senhaOng = request.body.senhaOng;
 
