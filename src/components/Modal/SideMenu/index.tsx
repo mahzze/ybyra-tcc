@@ -6,20 +6,26 @@ import './styles.css'
 
 const animation = {
    hidden: {
-      y: '-100vh',
+      x: '100vh',
       opacity: 0
    },
    visible: {
+      x: '0',
       y: '0',
-      opacity: 1
+      opacity: 1,
+      transition:{
+         duration: 0.2,
+         type: 'spring',
+         damping: 50,
+         stiffness: 800
+      }
    },
    exit: {
-      y: '100vh',
+      x: '-100vh', 
       opacity: 0
    }
 }
 
-//tentei fazer o modal ser : null|JSX.Element mas falhei, dps arrumo isso
 const Modal: any = ({open, onClose}: { open: boolean , onClose: (() => void)}) => {
 
    if(!open) return null
@@ -30,21 +36,20 @@ const Modal: any = ({open, onClose}: { open: boolean , onClose: (() => void)}) =
       <>
          <div className="overlayDiv">
             <motion.div 
-               className="Modal" 
+               className="Modal wrapper" 
                onMouseLeave={onClose}
                variants={animation}
+               initial="hidden"
+               animate="visible"
+               exit="exit"
             >
-               <div>
-                  <motion.button
-                     whileHover={{scale: 1.1}}
-                     whileTap={{scale: 0.9}}
-                     onClick={onClose}
-                  > Fechar </motion.button>
-               </div>
-               <div>
+               <header>
                   <img src='../assets/logo.svg' alt='foto de perfil' className='userModal'/>
-               </div>
-               <div></div>
+               </header>
+               <section>
+                  COLOCAR AS ROUTES AQUI
+               </section>
+               <footer className="about-us">about-us</footer>
             </motion.div>
          </div>
       </>,

@@ -1,0 +1,23 @@
+.FormModal {
+    position: fixed;
+    right: 0;
+    bottom:0;
+    top: 0;
+    left: 0;
+    height: 50vh;
+    width: clamp(40vw, 700px, 80%);
+    z-index: 100;
+    background: #fff;
+    border: 1px rgba(0,60,40, 0.8) solid;
+    border-radius:6px;
+    padding: 2rem
+ }
+ 
+ .overlayDiv {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0, 0.7)
+ }
+ 

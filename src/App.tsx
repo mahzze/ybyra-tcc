@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
-import Registro from './components/Registro/ong';
+import Formulario from './components/Registro/Formulario';
 import Home from './components/Home/Home';
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
 			</nav>
 			<Routes>
 				<Route path='/' element={<Home />} />
-				<Route path='/Registro' element={<Registro />} />
+				<Route path='/Registro' element={<Formulario />} />
 			</Routes>
 		</Router>
 	);

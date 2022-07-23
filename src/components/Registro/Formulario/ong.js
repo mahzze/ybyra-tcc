@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import './style.css';
+import './styles.css';
 
-export default function Registro() {
+export default function ONGRegistro() {
   const [nomeOng, setNomeOng] = useState("");
   const [enderecoOng, setEnderecoOng] = useState("");
-  const [telefoneOng, setTelefoneOng] = useState(0);
+  const [telefoneOng, setTelefoneOng] = useState("");
   const [emailOng, setEmailOng] = useState("");
   const [senhaOng, setSenhaOng] = useState("");
 
@@ -31,7 +31,7 @@ export default function Registro() {
         <input type="text" onChange={(event) => (setEnderecoOng(event.target.value))} /> 
 
         <label>Telefone</label>
-        <input type="number" onChange={(event) => (setTelefoneOng(event.target.value))} /> 
+        <input type="text" onChange={(event) => (setTelefoneOng(event.target.value))} /> 
 
         <label>Email</label>
         <input type="email" onChange={(event) => (setEmailOng(event.target.value))} />

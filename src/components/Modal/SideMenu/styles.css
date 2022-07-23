@@ -11,10 +11,15 @@
    padding: 2rem
 }
 
-.overlayDiv{
+.overlayDiv {
    left: 0;
    right: 0;
    bottom:0;
    top: 0;
    background: rgba(0,0,0, 0.7)
+}
+
+.wrapper {
+   display: grid;
+   grid-template-rows: 2fr 2fr 1fr;
 }

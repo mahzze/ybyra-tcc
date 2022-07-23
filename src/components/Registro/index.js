@@ -23,11 +23,30 @@ app.post('/registroOng', (request, response) => {
     db.connect(function(err) {
       if (err) throw err;
       console.log("Connected!");
-      db.query("INSERT INTO ongs (nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng) VALUES (?, ?, ?, ?, ?)", [nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng], function (err, result) {
+      db.query("INSERT INTO ongs (nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng) VALUES (?, ?, ?, ?, ?)",
+       [nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng], function (err, result) {
         if (err) throw err;
         console.log("Inserted");
       });
     });
+});
+
+app.post('/registroPessoa', (request, response) => {
+  const nome = request.body.nome;
+  const endereco = request.body.endereco;
+  const telefone = request.body.telefone;
+  const email = request.body.email;
+  const senha = request.body.senha;
+
+  db.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+    db.query("INSERT INTO usuarios (nome, endereco, telefone, email, senha) VALUES (?, ?, ?, ?, ?)",
+     [nome, endereco, telefone, email, senha], function (err, result) {
+      if (err) throw err;
+      console.log("Inserted");
+    });
+  });
 });
 
 app.listen(3000, () => {console.log('Servidor 3000')});

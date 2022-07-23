@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './App.css';
+import { AnimatePresence } from 'framer-motion';
 
-import Modal from '../Modal';
+import './App.css';
+import Modal from '../Modal/SideMenu';
 
 export default function App() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,10 +21,15 @@ export default function App() {
 			  	</button>
 			</section>
 		 </nav>
-		 <Modal 
-			open={isModalOpen}
-			onClose={() => setIsModalOpen(false)}
-		 />
+		 <AnimatePresence
+		 	initial={false}
+			exitBeforeEnter={true}
+		>
+			<Modal 
+				open={isModalOpen}
+				onClose={() => setIsModalOpen(false)}
+			/>
+			</AnimatePresence>
 	  </div>
 	);
  }
