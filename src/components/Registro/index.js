@@ -38,11 +38,12 @@ app.post('/registroPessoa', (request, response) => {
   const email = request.body.email;
   const senha = request.body.senha;
 
-  db.connect(function(err) {
+  db.connect((err) => {
     if (err) throw err;
     console.log("Connected!");
     db.query("INSERT INTO usuarios (nome, endereco, telefone, email, senha) VALUES (?, ?, ?, ?, ?)",
-     [nome, endereco, telefone, email, senha], function (err, result) {
+     [nome, endereco, telefone, email, senha],
+     (err, result) => {
       if (err) throw err;
       console.log("Inserted");
     });

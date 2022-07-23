@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 
 import FormModal from '../../Modal/FormModal';
-import ONGRegistro from './ong.js';
-import PessoaRegistro from './pessoaNormal';
+import ONGRegistro from './ongs.js';
+import PessoaRegistro from './pessoas';
 
 const Formulario = () => {
   const [user, setUser] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(true)
-
-
 
   return (
     <>
