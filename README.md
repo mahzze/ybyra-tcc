@@ -2,14 +2,12 @@
 ## RUN THE PROJECT <br/>
 /ybyra-tcc/ - npm run registro <br/>
 . inicie o MySQL na máquina e crie o banco de dados à partir do documento src/components/database/database.sql
------
 
 ## TO-DO
 . blur no registro enquanto o usuário escolhe qual tipo de cadastro <br/>
 . login - diferenciar o tipo de usuario para mostrar diferentes funções de acordo com esse tipo: pessoas - registro de lugares; ongs - visualização dos lugares cadastrados e botão "aceite" <br/>
 . contador de árvores plantadas <br/>
 . automação de emails <br/>
------
 
 ## Comentários
 . acho que a navbar deveria ser no header, mesmo. simplão e clean <br/>
