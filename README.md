@@ -1,16 +1,19 @@
 # Ybyrá  
+RUN THE PROJECT
+/ybyra-tcc/ - npm run registro
+. inicie o MySQL na máquina e crie o banco de dados à partir do documento src/components/database/database.sql
+-----
 
-Hallo!   
-Decidi reiniciar o projeto e fazer da forma certa  
-Vou começar a fazer o frontend e depois faço o backend (vindo do futuro pra avisar um possível sofredor: ALGUÉM PFV APRENDA react-spring, facilita mt na criação do modal que abria como um side-menu no draft inicial)  
-A aplicação foi criada com CRA, também chamado de create-react-app (JP ou Lucas, se forem desenvolver o front, estudem react e typescript)  
-Vou pausar por aqui e depois continuo se conseguir, pq meu pc tá morrendo.  
-Atualmente o projeto está basicamente vazio (pq parei no meio pra desenvolver um projeto paralelo pra aprender mais sobre react e TS), então ainda vai dar um trabalho pra terminar tanto o front quanto o back.  
-Se eu não continuar desenvolvendo o projeto dentro de uma semana, considerem que meu PC faleceu    
+# TO-DO
+. blur no registro enquanto o usuário escolhe qual tipo de cadastro
+. login - diferenciar o tipo de usuario para mostrar diferentes funções de acordo com esse tipo: pessoas - registro de lugares; ongs - visualização dos lugares cadastrados e botão "aceite"
+. contador de árvores plantadas
+. automação de emails
+-----
 
----  
-~ mah
-
-Run the project
-- yarn -- no diretório geral
-- yarn start -- também no dir. geral
+# Comentários
+. acho que a navbar deveria ser no header, mesmo. simplão e clean
+https://img.freepik.com/premium-vector/gradient-landing-page-with-laptop-tools_23-2148273811.jpg?w=2000
+. referência pro dark theme do site:
+https://codepen.io/ig_design/pen/omQXoQ
+. juntar as páginas de Login e Registro (?)

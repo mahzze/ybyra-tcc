@@ -10,7 +10,7 @@ export default function PessoaRegistro() {
   const [senha, setSenha] = useState("");
 
   const registroPessoa = () => {
-    Axios.post("http://localhost:3000/registroPessoa", {
+    Axios.post("http://localhost:3001/registroPessoa", {
       nome: nome,
       endereco: endereco,
       telefone: telefone,

@@ -22,11 +22,11 @@ app.post('/registroOng', (request, response) => {
 
     db.connect(function(err) {
       if (err) throw err;
-      console.log("Connected!");
+      console.log("Conectado!");
       db.query("INSERT INTO ongs (nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng) VALUES (?, ?, ?, ?, ?)",
        [nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng], function (err, result) {
         if (err) throw err;
-        console.log("Inserted");
+        console.log("Inserido");
       });
     });
 });
@@ -40,14 +40,14 @@ app.post('/registroPessoa', (request, response) => {
 
   db.connect((err) => {
     if (err) throw err;
-    console.log("Connected!");
+    console.log("Conectado!");
     db.query("INSERT INTO usuarios (nome, endereco, telefone, email, senha) VALUES (?, ?, ?, ?, ?)",
      [nome, endereco, telefone, email, senha],
      (err, result) => {
       if (err) throw err;
-      console.log("Inserted");
+      console.log("Inserido");
     });
   });
 });
 
-app.listen(3000, () => {console.log('Servidor 3000')});
+app.listen(3001, () => {console.log('Servidor 3001')});

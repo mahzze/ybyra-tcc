@@ -10,7 +10,7 @@ export default function ONGRegistro() {
   const [senhaOng, setSenhaOng] = useState("");
 
   const registroOng = () => {
-    Axios.post("http://localhost:3000/registroOng", {
+    Axios.post("http://localhost:3001/registroOng", {
       nomeOng: nomeOng,
       enderecoOng: enderecoOng,
       telefoneOng: telefoneOng,

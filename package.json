@@ -23,10 +23,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "nodemon ./src/components/registro/index.js",
+    "react": "react-scripts start",
+    "registro": "concurrently \"npm run server \" \"npm run react\" "
   },
   "eslintConfig": {
     "extends": [
@@ -45,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }
