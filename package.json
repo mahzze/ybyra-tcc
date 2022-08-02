@@ -27,9 +27,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon ./src/components/registro/index.js",
+    "serverRegistro": "nodemon ./src/components/registro/index.js",
+    "serverLogin": "nodemon ./src/components/login/index.js",
     "react": "react-scripts start",
-    "registro": "concurrently \"npm run server \" \"npm run react\" "
+    "registro": "concurrently \"npm run serverRegistro \" \"npm run react\" ",
+    "login": "concurrently \"npm run serverLogin \" \"npm run react\" "
   },
   "eslintConfig": {
     "extends": [
