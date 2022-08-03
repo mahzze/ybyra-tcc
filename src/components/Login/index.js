@@ -16,14 +16,14 @@ const db = mysql.createConnection({
 app.get('/loginOng', (request, response) => {
     const emailOng = request.body.emailOng;
     const senhaOng = request.body.senhaOng;
-
+     
     db.connect((err) => {
       if (err) throw err;
       console.log("Conectado!");
       db.query("SELECT IF( EXISTS( SELECT * FROM ongs WHERE emailOng = ? AND senhaOng = ?), 1, 0;", [emailOng, senhaOng],
        (err, result) => {
         if (err) throw err;
-        reponse.send(result);
+        response.send(result);
       });
     });
 });

@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
-import FormModal from '../../Modal/FormModal';
-import ONGRegistro from './ongs.js';
+import FormModal from '../../FormModal';
+import ONGRegistro from './ongs';
 import PessoaRegistro from './pessoas';
 
 const Formulario = () => {
@@ -10,12 +11,20 @@ const Formulario = () => {
 
   return (
     <>
+    <AnimatePresence
+      initial={true}
+      exitBeforeEnter={true}
+      onExitComplete={() => null }
+    >
+      { isModalOpen &&
       <FormModal 
         isOpen={isModalOpen}
         close={() => setIsModalOpen(false)}
         user={user} 
         setUser={setUser}
       />
+      }
+    </AnimatePresence>
       {user ==="ONG"? <ONGRegistro/> : <PessoaRegistro/>}
     </>
   )

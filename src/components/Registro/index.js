@@ -14,21 +14,21 @@ const db = mysql.createConnection({
 });
 
 app.post('/registroOng', (request, response) => {
-    const nomeOng = request.body.nomeOng;
-    const enderecoOng = request.body.enderecoOng;
-    const telefoneOng = request.body.telefoneOng;
-    const emailOng = request.body.emailOng;
-    const senhaOng = request.body.senhaOng;
+  const nomeOng = request.body.nomeOng;
+  const enderecoOng = request.body.enderecoOng;
+  const telefoneOng = request.body.telefoneOng;
+  const emailOng = request.body.emailOng;
+  const senhaOng = request.body.senhaOng;
 
-    db.connect(function(err) {
+  db.connect(function(err) {
+    if (err) throw err;
+    console.log("Conectado!");
+    db.query("INSERT INTO ongs (nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng) VALUES (?, ?, ?, ?, ?)",
+      [nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng], function (err, result) {
       if (err) throw err;
-      console.log("Conectado!");
-      db.query("INSERT INTO ongs (nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng) VALUES (?, ?, ?, ?, ?)",
-       [nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng], function (err, result) {
-        if (err) throw err;
-        console.log("Inserido");
-      });
+      console.log("Inserido");
     });
+  });
 });
 
 app.post('/registroPessoa', (request, response) => {

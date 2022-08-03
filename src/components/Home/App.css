@@ -1,7 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Send+Flowers&display=swap');
 
+:root {
+    --green: rgba(102, 236, 154, 0.774);
+}
+body{
+    background: linear-gradient(rgb(), rgb());
+}
+
 .navbar-brand{
-    font-family: 'Send Flowers', cursive;
+    font-family: 'Send Flowers', cursive, sans-serif;
     font-size: 2rem;
     font-weight: 500;
 }
@@ -28,11 +35,11 @@
 
 .modal-btn-green, .modal-btn-green:hover{
     color: #fff;
-    background-color: var(--bs-green);
+    background-color: var(--green);
 }
 
 .modal-footer{
-    color: var(--bs-green);
+    color: var(--green);
 }
 
 .user{

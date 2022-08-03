@@ -46,11 +46,3 @@ export default function ONGRegistro() {
   );
 }
 
-/* 
-<><Router>
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/registro" element={<Registro />} />
-			</Routes>
-		</Router></>
-    */

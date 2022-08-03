@@ -1,0 +1,48 @@
+:root{
+   green: rgb(4, 37, 14);
+}
+
+.FormModal {
+   width: clamp(40vw, 700px, 80%);
+   background: rgba(230, 230, 230, 1);
+   border-radius:6px;
+   padding: 2rem;
+   text-align: center;
+   z-index: 100;
+   display: grid;
+   grid-template-rows: 1fr 1fr;
+}
+.wrapper {
+   display: grid;
+   grid-template-columns: 9fr 1fr 9fr;
+}
+.wrapper button {
+   width: 100%;
+   background-color: #fff;
+   color: var(--green);
+   border: 2px solid var(--green);
+   padding: 5px;
+   border-radius: 6px;
+   transition: 450ms cubic-bezier(0.175, 0.885, 0.32, 1.275)
+}
+
+.wrapper button:hover, .wrapper button:focus {
+   scale: 1.2;
+   background-color: var(--green);
+   color: #fff;
+}
+
+.overlayDiv {
+   position: absolute;
+   left: 0;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   min-height: 100vh;
+   min-width: 100vw;
+   backdrop-filter: blur(4px);
+   z-index: 10;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
