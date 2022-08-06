@@ -6,12 +6,8 @@ export default function LoginOngs() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    const [login, setLogin] = useState([]);
-
     const loginOng = () => {
-        Axios.get("https://localhost:3001/loginOng").then((response) => {
-            setLogin(response.data);
-        });
+        
     }
 
     return (

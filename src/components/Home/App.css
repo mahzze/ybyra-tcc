@@ -1,19 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Send+Flowers&display=swap');
+@font-face {
+    font-family: Coolvetica;
+    src: url(../Fonts/coolvetica.otf);
+}
+
+@font-face {
+    font-family: Straightler;
+    src: url(../Fonts/straightler.otf);
+}
 
 :root {
     --green: rgba(102, 236, 154, 0.774);
 }
+
 body{
     background: linear-gradient(rgb(), rgb());
 }
 
 .navbar-brand{
-    font-family: 'Send Flowers', cursive, sans-serif;
-    font-size: 2rem;
-    font-weight: 500;
+    font-family: Coolvetica;
+    font-size: 3rem;
 }
 
-.logo{
+.logo {
     height: 7vh;
     width: 7vh;
 }
