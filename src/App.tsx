@@ -3,27 +3,49 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 import Formulario from './components/Registro/Formulario';
 import Home from './components/Home/Home';
-import LoginOngs from './components/Login/Formulario/ongs';
 import "./components/Home/App.css";
+import Login from './components/Login/Formulario';
 
-export default function App() {
+const App = () => {
+
+	const user = sessionStorage.getItem("user")
 	return (
 		<Router>
 			<nav className="navbar navbar-light bg-light ps-4 pe-4">
 				<section className="container-fluid">
 					<span className="navbar-brand mb-0 p-3">Ybyrá</span>
 
-					<Link to='/'>Home</Link>
-					<Link to='/Registro'>Registro</Link>
-					<Link to='/Login'>Login</Link>
+					<Link className='btn' to='/'>Home</Link>
+					<Link className='btn' to='/Registro'>Registro</Link>
+					<Link className='btn' to='/Login'>Login</Link>
+					<>
+						{
+							user === null ? (
+								<>
+									<Link className='btn' to='/Registro' >Cadastrar-se</Link>
+									<Link className='btn' to='/Login'>Fazer Login</Link>
+								</>
+							)
+							: (
+								user === 'ong'
+									? <Link className='btn' to='/ong'>Página da ong</Link>
+									: <Link className='btn' to='/pessoa'>Página da pessoa</Link>
+							)
+
+						}
+					</>
 				</section>
-				
+
 			</nav>
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/Registro' element={<Formulario />} />
-				<Route path='/Login' element={<LoginOngs />} />
+				<Route path='/Login' element={<Login />} />
+				<Route path='/pessoa' element={<Home />} />
+				<Route path='/ong' element={<Home />} />
 			</Routes>
-		</Router>
+		</Router >
 	);
- }
+}
+
+export default App;

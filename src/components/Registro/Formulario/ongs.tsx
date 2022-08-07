@@ -22,7 +22,7 @@ export default function ONGRegistro() {
   }
  
   return (
-    <div className="Registro">
+    <form className="Registro">
       <div className="inputs">
         <label>Nome da Organização</label>
         <input type="text" onChange={(event) => (setNomeOng(event.target.value))} /> 
@@ -37,12 +37,12 @@ export default function ONGRegistro() {
         <input type="email" onChange={(event) => (setEmailOng(event.target.value))} />
 
         <label>Senha</label>
-        <input type="email" id='Senha' onChange={(event) => (setSenhaOng(event.target.value))} />
+        <input type="password" id='Senha' onChange={(event) => (setSenhaOng(event.target.value))} />
 
         <button type="submit" onClick={registroOng}> Registrar </button>
       </div>
       
-    </div>
+    </form>
   );
 }
 

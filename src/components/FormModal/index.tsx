@@ -26,13 +26,14 @@ const animation = {
 }
 
 type FormUser = {
+  text: string;
   isOpen: boolean;
   close: () => void;
   user: string;
   setUser: (arg:string) => void;
 }
 
-const FormModal = ({isOpen, close , user, setUser}: FormUser) => {
+const FormModal = ({text, isOpen, close , user, setUser}: FormUser) => {
   const portal = document.getElementById("root");
   if (portal === null || isOpen === false) return null
 
@@ -49,12 +50,12 @@ const FormModal = ({isOpen, close , user, setUser}: FormUser) => {
             exit="exit"
           >  
           <p>
-            Antes de se cadastrar: você é uma pessoa física ou representa uma ONG?
+            {text}
           </p>
           <div className="wrapper">
 
             <button onClick={() => {
-              setUser("ONG");
+              setUser("ong");
               close();
             }}
             >
@@ -62,7 +63,7 @@ const FormModal = ({isOpen, close , user, setUser}: FormUser) => {
             </button>
             <div></div>
             <button onClick={() => {
-              setUser("Pessoa");
+              setUser("pessoa");
               close();
             }}
             >

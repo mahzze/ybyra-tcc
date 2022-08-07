@@ -18,6 +18,7 @@ const Formulario = () => {
     >
       { isModalOpen &&
       <FormModal 
+        text='Antes de se cadastrar: você é uma pessoa física ou representa uma ONG?'
         isOpen={isModalOpen}
         close={() => setIsModalOpen(false)}
         user={user} 
@@ -25,7 +26,7 @@ const Formulario = () => {
       />
       }
     </AnimatePresence>
-      {user ==="ONG"? <ONGRegistro/> : <PessoaRegistro/>}
+      {user ==="ong"? <ONGRegistro/> : <PessoaRegistro/>}
     </>
   )
 

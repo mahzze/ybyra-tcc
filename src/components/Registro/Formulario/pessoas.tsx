@@ -22,7 +22,7 @@ export default function PessoaRegistro() {
   }
  
   return (
-    <div className="Registro">
+    <form className="Registro">
       <div className="inputs">
         <label>Nome</label>
         <input type="text" onChange={(event) => (setNome(event.target.value))} /> 
@@ -37,11 +37,11 @@ export default function PessoaRegistro() {
         <input type="email" onChange={(event) => (setEmail(event.target.value))} />
 
         <label>Senha</label>
-        <input type="email" id='Senha' onChange={(event) => (setSenha(event.target.value))} />
+        <input type="password" id='Senha' onChange={(event) => (setSenha(event.target.value))} />
 
         <button type="submit" onClick={registroPessoa}> Registrar </button>
       </div>
       
-    </div>
+    </form>
   );
 }
