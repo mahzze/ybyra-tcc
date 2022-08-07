@@ -26,21 +26,6 @@ body{
     width: 7vh;
 }
 
-.modal-fullscreen{
-    position: absolute;
-    right: 0;
-    background: rgba(0,0,0);
-    max-width: 40vw;
-}
-
-
-.logo-modal{
-    min-width: 40px;
-    min-height: 40px;
-    max-height: 20vh;
-    max-width: 20vh;
-}
-
 .modal-btn-green, .modal-btn-green:hover{
     color: #fff;
     background-color: var(--green);
@@ -48,9 +33,4 @@ body{
 
 .modal-footer{
     color: var(--green);
-}
-
-.user{
-    height: 5rem;
-    width: 5rem;
 }

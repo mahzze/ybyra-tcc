@@ -3,7 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 
 
-import FormModal from '../../FormModal';
+import FormModal from '../FormModal';
 import './styles.css';
 
 export default function Login() {
@@ -42,7 +42,7 @@ export default function Login() {
             />
             }
             </AnimatePresence>
-             <div className="d-flex">
+            
                 <div className="login">
                     <form className="inputs">
                         <label>Email</label>
@@ -53,8 +53,7 @@ export default function Login() {
 
                         <button onClick={()=> LOGON(user)}> Login </button>
                     </form>
-                </div>
-            </div>   
+                </div>  
         </>
     );
 }

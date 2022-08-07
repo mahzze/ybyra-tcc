@@ -13,6 +13,41 @@ const db = mysql.createConnection({
     database: 'ybyraDB'
 });
 
+app.post('/loginOng', (request, response) => {
+    const emailOng = request.body.emailOng;
+    const senhaOng = request.body.senhaOng;
+     
+    db.connect((err) => {
+      if (err) throw err;
+
+      let query = `SELECT * FROM ongs WHERE emailOng = ?  AND senhaOng = ?`
+      db.query( query, [emailOng, senhaOng],
+       (err, result) => {
+        if (err) throw err;
+        console.log(result)
+        sessionStorage.setItem("user","ong");
+        response.redirect('/');
+      });
+    });
+});
+
+app.post('/loginPessoa', (request, response) => {
+    const email = request.body.email;
+    const senha = request.body.senha;
+
+    db.connect((err) => {
+      if (err) throw err;
+      
+      db.query("SELECT SELECT * FROM usuarios WHERE email = ? AND senha = ? as RESULT;",
+       [email, senha], 
+       (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        sessionStorage.setItem("user","pessoa");
+      });
+    });
+});
+
 app.post('/registroOng', (request, response) => {
   const nomeOng = request.body.nomeOng;
   const enderecoOng = request.body.enderecoOng;

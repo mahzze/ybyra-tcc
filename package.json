@@ -23,15 +23,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "set PORT=3001 && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serverRegistro": "nodemon ./src/components/registro/index.js",
-    "serverLogin": "nodemon ./src/components/login/index.js",
-    "react": "react-scripts start",
-    "registro": "concurrently \"npm run serverRegistro \" \"npm run react\" ",
-    "login": "concurrently \"npm run serverLogin \" \"npm run react\" "
+    "projeto": "concurrently \"npm run start\" \"set PORT=3001 && nodemon ./src/components/Server/\" "
   },
   "eslintConfig": {
     "extends": [

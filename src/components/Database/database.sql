@@ -14,7 +14,7 @@ CREATE TABLE usuarios (
     id int primary key auto_increment,
     nome varchar(100) not null,
     endereco varchar(300) not null,
-    telefone varchar(10) not null,
+    telefone varchar(11) not null,
     email varchar(200) not null,
     senha varchar(50) not null
 );

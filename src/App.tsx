@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
-import Formulario from './components/Registro/Formulario';
+import Formulario from './components/Registro';
 import Home from './components/Home/Home';
 import "./components/Home/App.css";
-import Login from './components/Login/Formulario';
+import Login from './components/Login';
 
 const App = () => {
 
@@ -16,8 +16,6 @@ const App = () => {
 					<span className="navbar-brand mb-0 p-3">Ybyrá</span>
 
 					<Link className='btn' to='/'>Home</Link>
-					<Link className='btn' to='/Registro'>Registro</Link>
-					<Link className='btn' to='/Login'>Login</Link>
 					<>
 						{
 							user === null ? (

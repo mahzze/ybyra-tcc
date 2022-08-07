@@ -3,7 +3,7 @@
 . inicie o MySQL na máquina e crie o banco de dados à partir do documento src/components/database/database.sql <br/>
 . npm install <br/>
 . npm install concurrently -g <br/>
-. /ybyra-tcc/ - npm run registro 
+. /ybyra-tcc/ - npm run projeto 
 
 ## TO-DO
 . login - diferenciar o tipo de usuario para mostrar diferentes funções de acordo com esse tipo: pessoas - registro de lugares; ongs - visualização dos lugares cadastrados e botão "aceite" <br/>
