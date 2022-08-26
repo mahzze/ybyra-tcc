@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import { AnimatePresence } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import FormModal from '../FormModal';
 import './styles.css';
@@ -13,6 +13,8 @@ export default function Login() {
     const [senha, setSenha] = useState('');
 
     const [loginStatus, setLoginStatus] = useState('');
+
+    Axios.defaults.withCredentials = true;
 
     const login = () => {
         if (user === "pessoa") {
@@ -40,6 +42,15 @@ export default function Login() {
         }
     }
 
+    // não consegui realizar esse método à partir do tipo de usuário
+    useEffect(() => {
+        Axios.get('http://localhost:3001/login').then((response) => {
+            if (response.data.loggedIn == true) {
+                setLoginStatus(response.data.usuario[0].emailOng);
+            }
+        });
+    }, []);
+
     return (
         <> <AnimatePresence
             initial={true}
@@ -58,7 +69,7 @@ export default function Login() {
         </AnimatePresence>
         
         <div className="login">
-            <form className='inputs'>
+            
                 <label>Email</label>
                 <input type="email" onChange={(event) => (setEmail(event.target.value))} required/>
 
@@ -66,7 +77,7 @@ export default function Login() {
                 <input type="password" onChange={(event) => (setSenha(event.target.value))} required/>
 
                 <button onClick={login}> Login </button>
-            </form>
+    
             <h2>{loginStatus}</h2>
         </div>  
     </>

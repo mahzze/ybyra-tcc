@@ -2,9 +2,34 @@ const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 const app = express();
-app.use(cors());
+
 app.use(express.json());
+app.use(
+  cors({
+  origin: ['http://localhost:3000'],
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(
+  session({
+  key: 'usuarioId',
+  secret: 'subscribe',
+  resave: false,
+  saveUnintialized: false,
+  cookie: {
+    expires: 60 * 60 * 24,
+  }
+}));
 
 const db = mysql.createConnection({
     user: 'root',
@@ -13,35 +38,51 @@ const db = mysql.createConnection({
     database: 'ybyraDB'
 });
 
-app.post('/loginOng', (request, response) => {
+app.get('/login', (request, response) => {
+  if (request.session.usuario) {
+    response.send({loggedIn: true, usuario: request.session.usuario});
+  } else {
+    response.send({loggedIn: false});
+  }
+});
+
+app.post('/loginOng', (request, res) => {
     const emailOng = request.body.emailOng;
     const senhaOng = request.body.senhaOng;
   
-    let query = `SELECT * FROM ongs WHERE emailOng = ? AND senhaOng = ?;`;
-    db.query(query, 
-      [emailOng, senhaOng],
+    let query = `SELECT * FROM ongs WHERE emailOng = ?;`;
+    db.query(query, [emailOng],
       (err, result) => {
         if (err) throw err;
+
         if (result.length > 0) {
-          response.send(result);
+          bcrypt.compare(senhaOng, result[0].senhaOng, (error, response) => {
+            if(response) {
+              request.session.usuario = result;
+              console.log(request.session.usuario);
+              res.send(result);
+            } else {
+              res.send({message: 'wrong combination'});
+            }
+          });
         } else {
-          response.send({message: "wrong user/password combination"});
+          res.send({message: "user doesn't exist"});
         }
-      });
+    });
 });
 
-app.post('/loginPessoa', (request, response) => {
+app.post('/loginPessoa', (request, res) => {
   const email = request.body.email;
   const senha = request.body.senha;
   
-  let query = `SELECT * FROM usuarios WHERE email = ? AND senha = ?;`;
-  db.query( query, [email, senha],
+  let query = `SELECT * FROM usuarios WHERE email = ?;`;
+  db.query(query, [email],
     (err, result) => {
       if (err) throw err;
       if (result.length > 0) {
-        response.send(result);
+        res.send(result);
       } else {
-        response.send({message: "wrong user/password combination"})
+        res.send({message: "wrong user/password combination"})
       }
     });
 });
@@ -53,14 +94,18 @@ app.post('/registroOng', (request, response) => {
   const emailOng = request.body.emailOng;
   const senhaOng = request.body.senhaOng;
 
-  db.connect(function(err) {
+  bcrypt.hash(senhaOng, saltRounds, (err, hash) => {
     if (err) throw err;
 
-    db.query("INSERT INTO ongs (nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng) VALUES (?, ?, ?, ?, ?)",
-      [nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng],
-      (err, result) => {
+    db.connect(function(err) {
       if (err) throw err;
-      console.log("Inserido");
+
+      db.query("INSERT INTO ongs (nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng) VALUES (?, ?, ?, ?, ?)",
+        [nomeOng, enderecoOng, telefoneOng, emailOng, hash],
+        (err, result) => {
+        if (err) throw err;
+          console.log("Inserido");
+        });
     });
   });
 });
@@ -72,15 +117,19 @@ app.post('/registroPessoa', (request, response) => {
   const email = request.body.email;
   const senha = request.body.senha;
 
-  db.connect(function(err) {
+  bcrypt.hash(senha, saltRounds, (err, hash) => {
     if (err) throw err;
 
-    db.query("INSERT INTO usuarios (nome, endereco, telefone, email, senha) VALUES (?, ?, ?, ?, ?)",
-      [nome, endereco, telefone, email, senha],
-      (err, result) => {
+    db.connect((err) => {
       if (err) throw err;
-      console.log("Inserido");
-    });
+
+      db.query("INSERT INTO usuarios (nome, endereco, telefone, email, senha) VALUES (?, ?, ?, ?, ?)",
+        [nome, endereco, telefone, email, hash],
+        (err, result) => {
+          if (err) throw err;
+          console.log("Inserido");
+        });
+      });
   });
 });
 

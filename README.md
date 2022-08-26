@@ -9,7 +9,8 @@
 . login - diferenciar o tipo de usuario para mostrar diferentes funções de acordo com esse tipo: pessoas - registro de lugares; ongs - visualização dos lugares cadastrados e botão "aceite" <br/>
 . contador de árvores plantadas <br/>
 . automação de emails <br/>
-. autenticar o estado de login da pessoa e não apresentar mais as opções de cadastro e login
+. autenticar o estado de login da pessoa e não apresentar mais as opções de cadastro e login <br/>
+. registro concluído, direcionar para o login
 
 ## Comentários
 . referência pro dark theme do site:
