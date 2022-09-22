@@ -5,7 +5,11 @@ import './App.css';
 export default function Home() {
 
 	return (
-		<div className="App">
-		</div>
+		<section> 
+
+			<h1> Bem-Vindo ao <span> Projeto Ybyra</span> </h1>
+			<p> Venha mudar o mundo</p>
+
+		</section>
 	);
  }
