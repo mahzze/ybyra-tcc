@@ -11,11 +11,11 @@ const App = () => {
 	const user = sessionStorage.getItem("user")
 	return (
 		<Router>
-			<nav className="navbar navbar-light bg-light ps-4 pe-4">
-				<section className="container-fluid">
-					<span className="navbar-brand mb-0 p-3">Ybyrá</span>
+			<nav className="navbar navbar-light ps-4 pe-4">
+				<section className="container">
+					<Link className="navbar-brand mb-0 p-3" to='/'>Ybyrá</Link>
 
-					<Link className='btn' to='/'>Home</Link>
+				<div className='Rbuttons'>
 					<>
 						{
 							user === null ? (
@@ -32,6 +32,7 @@ const App = () => {
 
 						}
 					</>
+					</div>
 				</section>
 
 			</nav>

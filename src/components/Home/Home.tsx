@@ -8,7 +8,7 @@ export default function Home() {
 		<section> 
 
 			<h1> Bem-Vindo ao <span> Projeto Ybyra</span> </h1>
-			<p> Venha mudar o mundo</p>
+						<p> Venha mudar o mundo</p>
 
 		</section>
 	);
