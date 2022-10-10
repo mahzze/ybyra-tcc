@@ -5,6 +5,8 @@ import Formulario from './components/Registro';
 import Home from './components/Home/Home';
 import "./components/Home/App.css";
 import Login from './components/Login';
+import LugarRegistro from './components/Registro/lugar';
+import Registros from './components/Registro/registros';
 
 const App = () => {
 
@@ -26,8 +28,8 @@ const App = () => {
 							)
 							: (
 								user === 'ong'
-									? <Link className='btn' to='/ong'>Página da ong</Link>
-									: <Link className='btn' to='/pessoa'>Página da pessoa</Link>
+									? <Link className='btn' to='/Registros'>Registros</Link>
+									: <Link className='btn' to='/RegistroLugar'>Registrar Lugar</Link>
 							)
 
 						}
@@ -40,8 +42,8 @@ const App = () => {
 				<Route path='/' element={<Home />} />
 				<Route path='/Registro' element={<Formulario />} />
 				<Route path='/Login' element={<Login />} />
-				<Route path='/pessoa' element={<Home />} />
-				<Route path='/ong' element={<Home />} />
+				<Route path='/RegistroLugar' element={<LugarRegistro />} />
+				<Route path='/Registros' element={<Registros />} />
 			</Routes>
 		</Router >
 	);

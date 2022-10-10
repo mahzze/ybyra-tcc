@@ -7,8 +7,8 @@ export default function Home() {
 	return (
 		<section> 
 
-			<h1> Bem-Vindo ao <span> Projeto Ybyra</span> </h1>
-						<p> Venha mudar o mundo</p>
+			<h1> Bem-Vindo ao Projeto Ybyra </h1>
+			<p> Venha mudar o mundo</p>
 
 		</section>
 	);

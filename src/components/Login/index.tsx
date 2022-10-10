@@ -18,6 +18,7 @@ export default function Login() {
 
   const login = () => {
     if (user === "pessoa") {
+      sessionStorage.setItem('user', 'pessoa');
       Axios.post("http://localhost:3001/loginPessoa", {
         email: email,
         senha: senha
@@ -30,6 +31,7 @@ export default function Login() {
       });
     }
     if (user === "ong") {
+      sessionStorage.setItem('user', 'ong');
       Axios.post("http://localhost:3001/loginOng", {
         emailOng: email,
         senhaOng: senha
@@ -48,9 +50,11 @@ export default function Login() {
       if (response.data.loggedIn === true) {
         if (response.data.userType === "ong") {
           setLoginStatus(response.data.usuario[0].emailOng);
+          
         }
         if (response.data.userType === "pessoa") {
           setLoginStatus(response.data.usuario[0].email);
+          
         }
       }
     });

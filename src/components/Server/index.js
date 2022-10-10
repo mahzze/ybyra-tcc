@@ -136,4 +136,20 @@ app.post('/registroPessoa', (request, response) => {
   });
 });
 
+app.post('/registroLugar', (request, response) => {
+
+  const logradouro = request.body.nome;
+  const numero = request.body.endereco;
+  const cep = request.body.telefone;
+
+  /* adicionar também o email do usuário que fez o registro */
+
+  db.query("INSERT INTO lugares (logradouro, numero, cep) VALUES (?, ?, ?)",
+    [logradouro, numero, cep],
+    (err, result) => {
+      if (err) throw err;
+      console.log("Inserido");
+    });
+});
+
 app.listen(3001, () => { console.log('Servidor 3001') });

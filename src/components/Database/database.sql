@@ -19,8 +19,9 @@ CREATE TABLE usuarios (
     senha varchar(50) not null
 );
 
-CREATE TABLE lugaresConsideração (
+CREATE TABLE lugares (
     id int primary key auto_increment,
+    usuarioEmail varchar(200) not null,
     logradouro varchar(250) not null,
     numero int not null, 
     cep char(8)
