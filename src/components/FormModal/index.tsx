@@ -1,4 +1,4 @@
-import {motion, AnimatePresence} from 'framer-motion';
+import { motion } from 'framer-motion';
 import ReactDOM from 'react-dom';
 
 import './styles.css';
@@ -12,7 +12,7 @@ const animation = {
     x: '0',
     y: '0',
     opacity: 1,
-    transition:{
+    transition: {
       duration: 0.4,
       type: 'spring',
       damping: 50,
@@ -30,50 +30,50 @@ type FormUser = {
   isOpen: boolean;
   close: () => void;
   user: string;
-  setUser: (arg:string) => void;
+  setUser: (arg: string) => void;
 }
 
-const FormModal = ({text, isOpen, close , user, setUser}: FormUser) => {
+const FormModal = ({ text, isOpen, close, user, setUser }: FormUser) => {
   const portal = document.getElementById("root");
   if (portal === null || isOpen === false) return null
 
 
-  return(  
+  return (
     ReactDOM.createPortal(
       <>
         <div className="overlayDiv">
-          <motion.div 
+          <motion.div
             className="FormModal"
             variants={animation}
             initial="hidden"
             animate="visible"
             exit="exit"
-          >  
-          <p>
-            {text}
-          </p>
-          <div className="wrapper">
+          >
+            <p>
+              {text}
+            </p>
+            <div className="wrapper">
 
-            <button onClick={() => {
-              setUser("ong");
-              close();
-            }}
-            >
-              ONG
-            </button>
-            <div></div>
-            <button onClick={() => {
-              setUser("pessoa");
-              close();
-            }}
-            >
-              Pessoa
-            </button>
-          </div>
+              <button onClick={() => {
+                setUser("ong");
+                close();
+              }}
+              >
+                ONG
+              </button>
+              <div></div>
+              <button onClick={() => {
+                setUser("pessoa");
+                close();
+              }}
+              >
+                Pessoa
+              </button>
+            </div>
           </motion.div>
         </div>
       </>
-    , portal));
+      , portal));
 }
 
 export default FormModal;
