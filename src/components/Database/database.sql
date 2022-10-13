@@ -7,7 +7,7 @@ CREATE TABLE ongs (
     enderecoOng varchar(300) not null,
     telefoneOng varchar(11) not null,
     emailOng varchar(200) not null,
-    senhaOng varchar(50) not null
+    senhaOng varchar(72) not null
 );
 
 CREATE TABLE usuarios (
@@ -16,7 +16,7 @@ CREATE TABLE usuarios (
     endereco varchar(300) not null,
     telefone varchar(11) not null,
     email varchar(200) not null,
-    senha varchar(50) not null
+    senha varchar(72) not null
 );
 
 CREATE TABLE lugares (

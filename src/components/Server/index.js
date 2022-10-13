@@ -84,6 +84,7 @@ app.post('/loginPessoa', (request, res) => {
       if (err) throw err;
       if (result.length > 0) {
         bcrypt.compare(senha, result[0].senha, (error, response) => {
+          if (error) throw error;
           if (response) {
             request.session.usuario = result;
             request.session.userType = "pessoa";
@@ -115,6 +116,7 @@ app.post('/registroOng', (request, response) => {
         console.log("Inserido");
       });
   });
+  return response.redirect("/Login");
 });
 
 app.post('/registroPessoa', (request, response) => {
@@ -131,9 +133,9 @@ app.post('/registroPessoa', (request, response) => {
       [nome, endereco, telefone, email, hash],
       (err, result) => {
         if (err) throw err;
-        console.log("Inserido");
       });
   });
+  return response.redirect("/Login");
 });
 
 app.post('/registroLugar', (request, response) => {
@@ -141,14 +143,14 @@ app.post('/registroLugar', (request, response) => {
   const logradouro = request.body.nome;
   const numero = request.body.endereco;
   const cep = request.body.telefone;
+  const email = request.body.email;
 
-  /* adicionar também o email do usuário que fez o registro */
-
-  db.query("INSERT INTO lugares (logradouro, numero, cep) VALUES (?, ?, ?)",
-    [logradouro, numero, cep],
+  db.query("INSERT INTO lugares (logradouro, numero, cep, usuarioEmail) VALUES (?, ?, ?, ?)",
+    [logradouro, numero, cep, email],
     (err, result) => {
       if (err) throw err;
       console.log("Inserido");
+      console.log(result)
     });
 });
 

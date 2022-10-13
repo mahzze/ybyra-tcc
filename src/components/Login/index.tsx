@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import { AnimatePresence } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import FormModal from '../FormModal';
 import './styles.css';
@@ -19,6 +19,7 @@ export default function Login() {
   const login = () => {
     if (user === "pessoa") {
       sessionStorage.setItem('user', 'pessoa');
+      sessionStorage.setItem('email', email);
       Axios.post("http://localhost:3001/loginPessoa", {
         email: email,
         senha: senha
@@ -32,6 +33,7 @@ export default function Login() {
     }
     if (user === "ong") {
       sessionStorage.setItem('user', 'ong');
+      sessionStorage.setItem('email', email);
       Axios.post("http://localhost:3001/loginOng", {
         emailOng: email,
         senhaOng: senha
@@ -50,11 +52,11 @@ export default function Login() {
       if (response.data.loggedIn === true) {
         if (response.data.userType === "ong") {
           setLoginStatus(response.data.usuario[0].emailOng);
-          
+
         }
         if (response.data.userType === "pessoa") {
           setLoginStatus(response.data.usuario[0].email);
-          
+
         }
       }
     });
