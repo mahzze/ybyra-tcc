@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 const bcrypt = require('bcrypt');
+const { ALL } = require('dns');
 const saltRounds = 10;
 
 const app = express();
@@ -66,6 +67,7 @@ app.post('/loginOng', (request, res) => {
             res.send(result);
           } else {
             res.send({ message: 'wrong combination' });
+            // aparece isso quando o login tá certo
           }
         });
       } else {
@@ -90,7 +92,8 @@ app.post('/loginPessoa', (request, res) => {
             request.session.userType = "pessoa";
             res.send(result);
           } else {
-            res.send({ message: 'wrong combination' })
+            res.send({ message: 'wrong combination'})
+            // aparece isso quando o login tá certo
           }
         })
       } else {
