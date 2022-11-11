@@ -143,9 +143,9 @@ app.post('/registroPessoa', (request, response) => {
 
 app.post('/registroLugar', (request, response) => {
 
-  const logradouro = request.body.nome;
-  const numero = request.body.endereco;
-  const cep = request.body.telefone;
+  const logradouro = request.body.logradouro;
+  const numero = request.body.numero;
+  const cep = request.body.cep;
   const email = request.body.email;
 
   db.query("INSERT INTO lugares (logradouro, numero, cep, usuarioEmail) VALUES (?, ?, ?, ?)",
