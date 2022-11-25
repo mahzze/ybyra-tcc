@@ -6,16 +6,14 @@ import Home from './components/Home/Home';
 import "./components/Home/App.css";
 import Login from './components/Login';
 import LugarRegistro from './components/Registro/lugar';
-import Registros from './components/Registro/registros';
+import Lugares from './components/Lugares'
 import PerfilOng from './components/Perfis/perfilong';
 import PerfilUsuario from './components/Perfis/perfilusuario';
 import Sair from './components/Login/sair';
 
 const App = () => {
   const [user, setUser]: [string | null, any] = useState('');
-  useEffect(() => {
-    return setUser(sessionStorage.getItem('user'))
-  }, [sessionStorage.getItem('user')]);
+  useEffect(() => setUser(sessionStorage.getItem('user')), [sessionStorage.getItem('user')]);
 
   return (
 
@@ -37,7 +35,7 @@ const App = () => {
                   : (
                     user === 'ong'
                       ? <>
-                        <Link className='btn' to='/Registros'>Registros</Link>
+                        <Link className='btn' to='/Lugares'>Lugares registrados</Link>
                         <Link className='btn' to='/PerfilOng'>Perfil</Link>
                         <Link className='btn' to='/Sair'>Sair</Link>
                       </>
@@ -58,7 +56,7 @@ const App = () => {
         <Route path='/Registro' element={<Formulario />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/RegistroLugar' element={<LugarRegistro />} />
-        <Route path='/Registros' element={<Registros />} />
+        <Route path='/Lugares' element={<Lugares />} />
         <Route path='/PerfilOng' element={<PerfilOng />} />
         <Route path='/PerfilUsuario' element={<PerfilUsuario />} />
         <Route path='/Sair' element={<Sair />} />

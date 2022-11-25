@@ -52,32 +52,31 @@ export default function Login() {
       if (response.data.loggedIn === true) {
         if (response.data.userType === "ong") {
           setLoginStatus(response.data.usuario[0].emailOng);
-
         }
         if (response.data.userType === "pessoa") {
           setLoginStatus(response.data.usuario[0].email);
-
         }
       }
     });
   }, []);
 
   return (
-    <> <AnimatePresence
-      initial={true}
-      exitBeforeEnter={false}
-      onExitComplete={() => null}
-    >
-      {isModalOpen &&
-        <FormModal
-          text='Tipo de usuário'
-          isOpen={isModalOpen}
-          close={() => setIsModalOpen(false)}
-          user={user}
-          setUser={setUser}
-        />
-      }
-    </AnimatePresence>
+    <>
+      <AnimatePresence
+        initial={true}
+        exitBeforeEnter={false}
+        onExitComplete={() => null}
+      >
+        {isModalOpen &&
+          <FormModal
+            text='Tipo de usuário'
+            isOpen={isModalOpen}
+            close={() => setIsModalOpen(false)}
+            user={user}
+            setUser={setUser}
+          />
+        }
+      </AnimatePresence>
 
       <div className="login">
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Axios from "axios";
 import './styles.css';
 
@@ -20,18 +20,18 @@ export default function ONGRegistro() {
       console.log('Cadastrado com sucesso!');
     });
   }
- 
+
   return (
     <form className="Registro">
       <div className="inputs">
         <label>Nome da Organização</label>
-        <input type="text" onChange={(event) => (setNomeOng(event.target.value))} /> 
+        <input type="text" onChange={(event) => (setNomeOng(event.target.value))} />
 
         <label>Endereço</label>
-        <input type="text" onChange={(event) => (setEnderecoOng(event.target.value))} /> 
+        <input type="text" onChange={(event) => (setEnderecoOng(event.target.value))} />
 
         <label>Telefone</label>
-        <input type="text" onChange={(event) => (setTelefoneOng(event.target.value))} /> 
+        <input type="tel" onChange={(event) => (setTelefoneOng(event.target.value))} />
 
         <label>Email</label>
         <input type="email" onChange={(event) => (setEmailOng(event.target.value))} />
@@ -41,7 +41,7 @@ export default function ONGRegistro() {
 
         <button type="submit" onClick={registroOng}> Registrar </button>
       </div>
-      
+
     </form>
   );
 }

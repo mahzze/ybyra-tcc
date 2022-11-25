@@ -1,11 +1,9 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
-
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-
 const bcrypt = require('bcrypt');
 const { ALL } = require('dns');
 const saltRounds = 10;
@@ -66,8 +64,8 @@ app.post('/loginOng', (request, res) => {
             request.session.userType = "ong";
             res.send(result);
           } else {
+            // confere o banco de dados, deve estar com o campo de senhas menor do que o certo (o certo é de 72 pra cima)
             res.send({ message: 'wrong combination' });
-            // aparece isso quando o login tá certo
           }
         });
       } else {
@@ -92,8 +90,7 @@ app.post('/loginPessoa', (request, res) => {
             request.session.userType = "pessoa";
             res.send(result);
           } else {
-            res.send({ message: 'wrong combination'})
-            // aparece isso quando o login tá certo
+            res.send({ message: 'wrong combination' })
           }
         })
       } else {
@@ -141,10 +138,10 @@ app.post('/registroPessoa', (request, response) => {
   return response.redirect("/Login");
 });
 
-app.post('/registroLugar', (request, response) => {
+app.post('/registroLugar', (request) => {
 
   const logradouro = request.body.logradouro;
-  const numero = request.body.numero;
+  const numero = parseInt(request.body.numero);
   const cep = request.body.cep;
   const email = request.body.email;
 
@@ -153,8 +150,23 @@ app.post('/registroLugar', (request, response) => {
     (err, result) => {
       if (err) throw err;
       console.log("Inserido");
-      console.log(result)
     });
 });
+
+app.get('/lugares', (request, response) => {
+  db.query("SELECT logradouro, numero, ongSelecionada, qtdArvores, cep FROM lugares"), (error, result) => {
+    console.log(result)
+    if (error) throw error;
+    response.send({ regs: result })
+  }
+})
+
+app.get('/contar', (request, response) => {
+  //não está executando, porém a query está certa (copiei e testei direto no banco de dados e funcionou)
+  db.query("SELECT SUM(qtdArvores) FROM lugares"), (result) => {
+    console.log(result)
+    response.send({ result: result });
+  }
+})
 
 app.listen(3001, () => { console.log('Servidor 3001') });

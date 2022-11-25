@@ -25,10 +25,10 @@ export default function LugarRegistro() {
         <input type="text" onChange={(event) => (setLogradouro(event.target.value))} required />
 
         <label>Número</label>
-        <input type="text" onChange={(event) => (setNumero(event.target.value))} required />
+        <input type="number" min={0} onChange={(event) => (setNumero(event.target.value))} required />
 
         <label>CEP</label>
-        <input type="text" onChange={(event) => (setCep(event.target.value))} required />
+        <input type="text" maxLength={11} onChange={(event) => (setCep(event.target.value))} />
 
         <button type="submit" onClick={registroLugar}> Registrar </button>
       </div>

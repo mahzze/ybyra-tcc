@@ -20,18 +20,18 @@ export default function PessoaRegistro() {
       console.log('Cadastrado com sucesso!');
     });
   }
- 
+
   return (
     <form className="Registro">
       <div className="inputs">
         <label>Nome</label>
-        <input type="text" onChange={(event) => (setNome(event.target.value))} /> 
+        <input type="text" onChange={(event) => (setNome(event.target.value))} />
 
         <label>Endereço</label>
-        <input type="text" onChange={(event) => (setEndereco(event.target.value))} /> 
+        <input type="text" onChange={(event) => (setEndereco(event.target.value))} />
 
         <label>Telefone</label>
-        <input type="text" onChange={(event) => (setTelefone(event.target.value))} /> 
+        <input type="tel" onChange={(event) => (setTelefone(event.target.value))} />
 
         <label>Email</label>
         <input type="email" onChange={(event) => (setEmail(event.target.value))} />
@@ -41,7 +41,7 @@ export default function PessoaRegistro() {
 
         <button type="submit" onClick={registroPessoa}> Registrar </button>
       </div>
-      
+
     </form>
   );
 }
