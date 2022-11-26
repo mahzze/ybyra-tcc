@@ -109,7 +109,7 @@ app.post('/registroOng', (request, response) => {
   bcrypt.hash(senhaOng, saltRounds, (err, hash) => {
     if (err) throw err;
 
-    db.query("INSERT INTO ongs (nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng) VALUES (?, ?, ?, ?, ?)",
+    db.query(`INSERT INTO ongs (nomeOng, enderecoOng, telefoneOng, emailOng, senhaOng) VALUES (?, ?, ?, ?, ?)`,
       [nomeOng, enderecoOng, telefoneOng, emailOng, hash],
       (err, result) => {
         if (err) throw err;
@@ -128,9 +128,8 @@ app.post('/registroPessoa', (request, response) => {
 
   bcrypt.hash(senha, saltRounds, (err, hash) => {
     if (err) throw err;
-
-    db.query("INSERT INTO usuarios (nome, endereco, telefone, email, senha) VALUES (?, ?, ?, ?, ?)",
-      [nome, endereco, telefone, email, hash],
+    let query = `INSERT INTO usuarios (nome, endereco, telefone, email, senha) VALUES (?, ?, ?, ?, ?)`;
+    db.query(query, [nome, endereco, telefone, email, hash],
       (err, result) => {
         if (err) throw err;
       });
@@ -139,32 +138,51 @@ app.post('/registroPessoa', (request, response) => {
 });
 
 app.post('/registroLugar', (request) => {
-
   const logradouro = request.body.logradouro;
   const numero = parseInt(request.body.numero);
   const cep = request.body.cep;
   const email = request.body.email;
 
-  db.query("INSERT INTO lugares (logradouro, numero, cep, usuarioEmail) VALUES (?, ?, ?, ?)",
-    [logradouro, numero, cep, email],
+  let query = `INSERT INTO lugares (logradouro, numero, cep, usuarioEmail) VALUES (?, ?, ?, ?)`;
+  db.query(query, [logradouro, numero, cep, email],
     (err, result) => {
       if (err) throw err;
       console.log("Inserido");
     });
 });
 
-app.get('/lugares', (request, response) => {
-  db.query("SELECT logradouro, numero, ongSelecionada, qtdArvores, cep FROM lugares"), (error, result) => {
-    console.log(result)
+app.post('/lugares', (request, response) => {
+  console.log("lugares")
+  let query = `SELECT logradouro, numero, ongSelecionada, arvoresPlantadas, cep FROM lugares`;
+  // MESMO PROBLEMA DO CONTADOR
+  db.query(query), (error, result) => {
+    console.log("passso2")
     if (error) throw error;
     response.send({ regs: result })
   }
 })
 
-app.get('/contar', (request, response) => {
+app.post('/aceitarLocal', (request) => {
+  // FAZ UPDATE EM ongSelecionada
+  // db.query("UPDATE ")
+})
+
+app.post('/finalizarLocal', (request) => {
+  // FAZ UPDATE EM ongSelecionada e arvoresPlantadas
+  // db.query("UPDATE ")
+})
+
+app.post('/cancelarLocal', (request) => {
+  // DELETA LUGAR DO BANCO DE DADOS
+  // db.query("DELETE")
+})
+
+app.post('/contar', (request, response) => {
   //não está executando, porém a query está certa (copiei e testei direto no banco de dados e funcionou)
-  db.query("SELECT SUM(qtdArvores) FROM lugares"), (result) => {
+  let query = `SELECT SUM(arvoresPlantadas) FROM lugares`;
+  db.query(query), (err, result) => {
     console.log(result)
+    if (err) throw err;
     response.send({ result: result });
   }
 })

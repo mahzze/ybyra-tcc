@@ -24,7 +24,7 @@ CREATE TABLE lugares (
     usuarioEmail varchar(200) not null,
     logradouro varchar(250) not null,
     numero int not null, 
-    qtdArvores int,
+    arvoresPlantadas int,
     ongSelecionada varchar(100),
     cep char(8)
 );
