@@ -10,13 +10,14 @@
 2. npm run bp
 
 ## Pendente
-. Estilizar contador <br/>
+- [x] Refresh automático dos links
+- [X] Redirecionar para a página `login` após realizar o cadastro, e da `login` para as páginas específicas dos tipos de usuário 
+- [x] Consertar o reload 
+- [ ] Consertar os requests de `/lugares` e `/contar`
+- [ ] Fazer as funções de aceitar, cancelar e finalizar lugar
+- [ ] Completar o front-end
+- [ ] Fragmentar a `src/components/Server/` em arquivos menores para facilitar a manutenção
 . automação de emails <br/>
-. registro concluído, direcionar para o login <br/>
-. ongs - visualização dos lugares cadastrados, opções de aceitar lugar e finalizar lugar aceito (opções de finalização: "local aceito, X árvores plantadas", "local cancelado por motivo X")<br/>
-
-## Correções necessárias
-. auto-refresh da página após o login para atualizar os links.
 
 ## Comentários
 . fragmentar a Server/index.js em arquivos que tenham as funções de mesmo tipo? (ex: funções de logins no arquivo login.js, que é importado pelo index.js)
