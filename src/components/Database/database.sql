@@ -42,7 +42,7 @@ values (
   "12345678910",
   "ong@ong",
   "$2b$10$h/39iVnwY7Sesf55p1IlDOaC1P5GkU0UMfm2rz1dVLNYXw.0J85mu"
-)
+);
 
 INSERT INTO usuarios (
   nome,
@@ -57,4 +57,4 @@ values (
   "12345678910",
   "pes@pes",
   "$2b$10$xe64Wne6yK6cmT6exbR2HOecNsu.LbniTov3ui7slOhzsoId.0e7a"
-)
+);
