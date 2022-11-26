@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import { AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import FormModal from '../FormModal';
 import './styles.css';
@@ -13,6 +14,8 @@ export default function Login() {
   const [senha, setSenha] = useState('');
 
   const [loginStatus, setLoginStatus] = useState('');
+
+  const navigate = useNavigate();
 
   Axios.defaults.withCredentials = true;
 
@@ -30,7 +33,15 @@ export default function Login() {
           setLoginStatus(response.data[0].nome);
         }
       });
+
+      navigate('/RegistroLugar');
+      window.location.reload();
+      <>
+      <AnimatePresence
+      initial={false}/>
+      </>
     }
+
     if (user === "ong") {
       sessionStorage.setItem('user', 'ong');
       sessionStorage.setItem('email', email);
@@ -44,6 +55,13 @@ export default function Login() {
           setLoginStatus(response.data[0].nomeOng);
         }
       });
+
+      navigate('/Lugares');
+      window.location.reload();
+      <>
+      <AnimatePresence
+      initial={false}/>
+      </>
     }
   }
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import './styles.css';
+import { useNavigate } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 export default function PessoaRegistro() {
   const [nome, setNome] = useState("");
@@ -8,6 +10,8 @@ export default function PessoaRegistro() {
   const [telefone, setTelefone] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+
+  const navigate = useNavigate();
 
   const registroPessoa = () => {
     Axios.post("http://localhost:3001/registroPessoa", {
@@ -19,6 +23,13 @@ export default function PessoaRegistro() {
     }).then(() => {
       console.log('Cadastrado com sucesso!');
     });
+
+    navigate('/Login');
+      window.location.reload();
+      <>
+      <AnimatePresence
+      initial={false}/>
+      </>
   }
 
   return (

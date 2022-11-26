@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Axios from "axios";
 import './styles.css';
+import { useNavigate } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 export default function ONGRegistro() {
   const [nomeOng, setNomeOng] = useState("");
@@ -8,6 +10,8 @@ export default function ONGRegistro() {
   const [telefoneOng, setTelefoneOng] = useState("");
   const [emailOng, setEmailOng] = useState("");
   const [senhaOng, setSenhaOng] = useState("");
+
+  const navigate = useNavigate();
 
   const registroOng = () => {
     Axios.post("http://localhost:3001/registroOng", {
@@ -19,6 +23,13 @@ export default function ONGRegistro() {
     }).then(() => {
       console.log('Cadastrado com sucesso!');
     });
+
+    navigate('/Login');
+      window.location.reload();
+      <>
+      <AnimatePresence
+      initial={false}/>
+      </>
   }
 
   return (
