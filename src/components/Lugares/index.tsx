@@ -9,7 +9,7 @@ export default function Lugares() {
   const [lugares, setLugares] = useState([] as lugar[]);
 
   useEffect(() => {
-    Axios.post('http://localhost:3001/lugares').then((res) => {
+    Axios.get('http://localhost:3001/lugares').then((res) => {
       let result = res.data.regs
       setLugares(result);
       console.log(result)

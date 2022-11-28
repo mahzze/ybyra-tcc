@@ -6,12 +6,14 @@ export default function LugarRegistro() {
   const [logradouro, setLogradouro] = useState("");
   const [numero, setNumero] = useState("");
   const [cep, setCep] = useState("");
+  const [arvores, setArvores] = useState("");
 
   const registroLugar = () => {
     Axios.post("http://localhost:3001/registroLugar", {
       logradouro: logradouro,
       numero: numero,
       cep: cep,
+      arvores: arvores,
       email: sessionStorage.getItem('email')
     }).then(() => {
       console.log('Cadastrado com sucesso!');
@@ -29,6 +31,9 @@ export default function LugarRegistro() {
 
         <label>CEP</label>
         <input type="text" maxLength={11} onChange={(event) => (setCep(event.target.value))} />
+
+        <label>Árvores</label>
+        <input type="number" onChange={(event) => (setArvores(event.target.value))} />
 
         <button type="submit" onClick={registroLugar}> Registrar </button>
       </div>

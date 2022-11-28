@@ -5,9 +5,11 @@ const Contador = () => {
 
   const [count, setCount] = useState(0);
 
+  Axios.defaults.withCredentials = true;
+
   useEffect(() => {
     // Essa requisição não está passando da query, embora a query esteja certa
-    Axios.post("http://localhost:3001/contar").then((response) => {
+    Axios.get("http://localhost:3001/contar").then((response) => {
       setCount(response.data.result);
     });
   }, [])

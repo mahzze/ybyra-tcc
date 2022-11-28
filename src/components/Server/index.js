@@ -142,30 +142,29 @@ app.post('/registroLugar', (request) => {
   const numero = parseInt(request.body.numero);
   const cep = request.body.cep;
   const email = request.body.email;
+  const arvores = parseInt(request.body.arvores);
 
-  let query = `INSERT INTO lugares (logradouro, numero, cep, usuarioEmail) VALUES (?, ?, ?, ?)`;
-  db.query(query, [logradouro, numero, cep, email],
+  let query = `INSERT INTO lugares (logradouro, numero, arvoresPlantadas, cep, usuarioEmail) VALUES (?, ?, ?, ?, ?)`;
+  db.query(query, [logradouro, numero, arvores, cep, email],
     (err, result) => {
       if (err) throw err;
       console.log("Inserido");
     });
 });
 
-app.post('/lugares', (request, response) => {
-  console.log("lugares")
-  let query = `SELECT logradouro, numero, ongSelecionada, arvoresPlantadas, cep FROM lugares`;
-  // MESMO PROBLEMA DO CONTADOR
+app.get('/lugares', (request, response) => {
+  let query = `SELECT * FROM lugares`;
   db.query(query), (error, result) => {
-    console.log("passso2")
     if (error) throw error;
-    response.send({ regs: result })
+    response.send({ regs: result });
   }
 })
 
+/* ACHO ESSE AQUI MEIO DESNECESSÁRIO
 app.post('/aceitarLocal', (request) => {
   // FAZ UPDATE EM ongSelecionada
   // db.query("UPDATE ")
-})
+})*/
 
 app.post('/finalizarLocal', (request) => {
   // FAZ UPDATE EM ongSelecionada e arvoresPlantadas
@@ -177,13 +176,11 @@ app.post('/cancelarLocal', (request) => {
   // db.query("DELETE")
 })
 
-app.post('/contar', (request, response) => {
-  //não está executando, porém a query está certa (copiei e testei direto no banco de dados e funcionou)
+app.get('/contar', (request, response) => {
   let query = `SELECT SUM(arvoresPlantadas) FROM lugares`;
   db.query(query), (err, result) => {
-    console.log(result)
     if (err) throw err;
-    response.send({ result: result });
+    response.send(result);
   }
 })
 
