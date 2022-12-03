@@ -153,31 +153,59 @@ app.post('/registroLugar', (request) => {
 });
 
 app.get('/lugares', (request, response) => {
-  let query = `SELECT * FROM lugares`;
+  let query = "SELECT * FROM lugares";
   db.query(query), (error, result) => {
     if (error) throw error;
     response.send({ regs: result });
   }
 })
 
-/* ACHO ESSE AQUI MEIO DESNECESSÁRIO
-app.post('/aceitarLocal', (request) => {
-  // FAZ UPDATE EM ongSelecionada
-  // db.query("UPDATE ")
-})*/
+/* A: ACHO ESSE AQUI MEIO DESNECESSÁRIO
+*  M: É que to fazendo do jeito que eu tinha proposto inicialmente
+*  Não faz sentido o usuário comum decidir a quantidade de árvores
+*  Isso é trabalho das ONGs. Also: coisa que poderia ser feita pra melhorar isso aqui é colocar
+*  o nome do usuario na sessionStorage, pra aparecer o nome e não o email da ong que aceitar
+*  mas no momento tem coisa mais urgente pra ser feita
+*/
+app.post('/aceitar', (request) => {
+  let query = "UPDATE lugares SET ongSelecionada = ? WHERE logradouro = ? AND numero = ?";
+  let logradouro = request.body.logradouro;
+  let numero = request.body.numero;
+  let ong = request.body.ong;
 
-app.post('/finalizarLocal', (request) => {
-  // FAZ UPDATE EM ongSelecionada e arvoresPlantadas
-  // db.query("UPDATE ")
+  db.query(query, [ong, logradouro, numero], (err, result) => {
+    if (err) throw err;
+    console.log("local aceito: ", result)
+  })
 })
 
-app.post('/cancelarLocal', (request) => {
-  // DELETA LUGAR DO BANCO DE DADOS
-  // db.query("DELETE")
+app.post('/finalizar', (request) => {
+  let query = "UPDATE lugares SET arvoresPlantadas = ? WHERE logradouro = ? AND numero = ?";
+  let logradouro = request.body.logradouro;
+  let numero = request.body.numero;
+  let arvoresPlantadas = request.body.arvoresPlantadas;
+
+  db.query(query, [arvoresPlantadas, logradouro, numero],
+    (err, result) => {
+      if (err) throw err
+      console.log(result)
+    })
+})
+
+app.post('/cancelar', (request) => {
+  let query = "DELETE FROM lugares WHERE logradouro = ? AND numero = ?"
+  let lugar = request.body.logradouro
+  let numero = request.body.numero
+
+  db.query(query, [lugar, numero],
+    (err, result) => {
+      if (err) throw err;
+      console.log(result)
+    });
 })
 
 app.get('/contar', (request, response) => {
-  let query = `SELECT SUM(arvoresPlantadas) FROM lugares`;
+  let query = "SELECT SUM(arvoresPlantadas) FROM lugares";
   db.query(query), (err, result) => {
     if (err) throw err;
     response.send(result);
