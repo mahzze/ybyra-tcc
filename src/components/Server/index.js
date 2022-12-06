@@ -166,13 +166,6 @@ app.get('/showLugares', (request, response) => {
   // }
 })
 
-/* A: ACHO ESSE AQUI MEIO DESNECESSÁRIO
-*  M: É que to fazendo do jeito que eu tinha proposto inicialmente
-*  Não faz sentido o usuário comum decidir a quantidade de árvores
-*  Isso é trabalho das ONGs. Also: coisa que poderia ser feita pra melhorar isso aqui é colocar
-*  o nome do usuario na sessionStorage, pra aparecer o nome e não o email da ong que aceitar
-*  mas no momento tem coisa mais urgente pra ser feita
-*/
 app.post('/aceitar', (request) => {
   let query = "UPDATE lugares SET ongSelecionada = ? WHERE logradouro = ? AND numero = ?";
   let logradouro = request.body.logradouro;

@@ -18,7 +18,7 @@ body{
 
 .navbar-brand{
     font-family: Coolvetica;
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 .logo {
@@ -39,4 +39,21 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr;
 
+}
+
+section {
+    margin-left: 5%;
+}
+
+section div p {
+    width: 50%;
+    text-align: justify;
+    float: left;
+}
+
+img {
+    width: 12em;
+    float: right;
+    margin-right: 12%;
+    margin-top: -3%;
 }
