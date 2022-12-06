@@ -150,19 +150,21 @@ app.post('/registroLugar', (request) => {
 });
 
 app.get('/showLugares', (request, response) => {
-  // let query = "select logradouro, numero, arvoresPlantadas, ongSelecionada, cep from lugares";
+  let query = "select logradouro, numero, arvoresPlantadas, ongSelecionada, cep from lugares";
 
-  // db.query(query), (error, result) => {
-  //   if (error) throw error;
-  // console.log("foi100%")
+  db.query(query), (error, result) => {
+    if (error) throw error;
+    console.log("foi100%")
+    response.send({ regs: result })
+  }
   // SAMPLE DE DADOS PARA TESTAR FRONT-END, TROCAR PELOS DADOS DO BANCO DE DADOS
-  response.send({
-    regs: [
-      { logradouro: "testeAceitar", numero: 7442, ongSelecionada: null, arvoresPlantadas: null, cep: "03535000" },
-      { logradouro: "testeFinalizar", numero: 284, ongSelecionada: "teste", arvoresPlantadas: null, cep: "03535000" },
-      { logradouro: "testeConcluida", numero: 500, ongSelecionada: "teste", arvoresPlantadas: 163, cep: "03535000" },
-    ]
-  });
+  // response.send({
+  //   regs: [
+  //     { logradouro: "testeAceitar", numero: 7442, ongSelecionada: null, arvoresPlantadas: null, cep: "03535000" },
+  //     { logradouro: "testeFinalizar", numero: 284, ongSelecionada: "teste", arvoresPlantadas: null, cep: "03535000" },
+  //     { logradouro: "testeConcluida", numero: 500, ongSelecionada: "teste", arvoresPlantadas: 163, cep: "03535000" },
+  //   ]
+  // });
   // }
 })
 
@@ -174,7 +176,7 @@ app.post('/aceitar', (request) => {
 
   db.query(query, [ong, logradouro, numero], (err, result) => {
     if (err) throw err;
-    console.log("local aceito: ", result)
+    console.log("local aceito por : " + ong)
   })
 })
 
@@ -204,10 +206,11 @@ app.post('/cancelar', (request) => {
 })
 
 app.get('/contar', (request, response) => {
-  let query = "SELECT SUM(arvoresPlantadas) FROM lugares";
+  let query = "SELECT SUM(arvoresPlantadas) FROM lugares WHERE arvoresPlantadas > 0";
 
   db.query(query), (err, result) => {
     if (err) throw err;
+    console.log("contador fez pegou os dados")
     response.send(result);
   }
 })

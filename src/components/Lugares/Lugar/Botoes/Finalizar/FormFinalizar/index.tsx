@@ -10,12 +10,14 @@ type Params = {
 const portal = document.getElementById("root");
 
 const FormFinalizar = ({ isOpen, close, clique }: Params) => {
-  if (!isOpen) return <></>;// o fragment só tá aí pra impedir que dê erro de tipagem na Finalizar/index
+  if (!isOpen) return <div className="ta aqui">AAAAAAAAAA</div>;
 
   return ReactDOM.createPortal(
     <section className="overlay">
       <section className="form">
-
+        <label>Digite a quantia de árvores plantadas
+          <input id="inpArvores" type="number" />
+        </label>
         <section className="botoes">
           <button className="finalizar" onClick={clique}>Finalizar</button>
           <button className="cancelar" onClick={close}>Cancelar</button>

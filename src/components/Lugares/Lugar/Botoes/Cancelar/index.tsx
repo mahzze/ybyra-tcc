@@ -9,7 +9,10 @@ type Params = {
 const Cancelar = ({ logradouro, numero }: Params) => {
 
   const cancelarLocal = (logradouro: string, numero: number) => {
-    axios.post('http://localhost:3001/cancelar')
+    axios.post('http://localhost:3001/cancelar', {
+      logradouro: logradouro,
+      numero: numero
+    })
   }
 
   return (

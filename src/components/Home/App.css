@@ -41,11 +41,11 @@ body{
 
 }
 
-section {
+.homeSec {
     margin-left: 5%;
 }
 
-section div p {
+.homeSec div p {
     width: 50%;
     text-align: justify;
     float: left;
