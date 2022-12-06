@@ -1,5 +1,5 @@
 :root{
-   green: rgb(4, 37, 14);
+   --green: rgb(4, 37, 14);
 }
 
 .FormModal {

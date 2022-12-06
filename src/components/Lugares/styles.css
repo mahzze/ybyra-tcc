@@ -1,0 +1,11 @@
+.wrapper {
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.locais {
+  width: 90vw
+}

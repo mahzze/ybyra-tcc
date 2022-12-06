@@ -9,7 +9,7 @@ export default function Lugares() {
   const [lugares, setLugares] = useState([] as lugar[]);
 
   useEffect(() => {
-    Axios.get('http://localhost:3001/lugares').then((res) => {
+    Axios.get('http://localhost:3001/showLugares').then((res) => {
       let result = res.data.regs
       setLugares(result);
       console.log(result)
@@ -31,6 +31,7 @@ export default function Lugares() {
   }
 
   return (
+    <div className="wrapper">
     <section className="locais">
       {
         lugares.map((lugar: lugar) => {
@@ -46,6 +47,7 @@ export default function Lugares() {
         })
       }
     </section>
+    </div>
   );
 }
 

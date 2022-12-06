@@ -1,3 +1,6 @@
+import axios from "axios"
+import '../styles.css'
+
 type Params = {
   logradouro: string,
   numero: number
@@ -6,13 +9,13 @@ type Params = {
 const Cancelar = ({ logradouro, numero }: Params) => {
 
   const cancelarLocal = (logradouro: string, numero: number) => {
-    return
+    axios.post('http://localhost:3001/cancelar')
   }
 
   return (
     <button
       onClick={() => cancelarLocal(logradouro, numero)}
-      className="cancelar"
+      id="cancelar"
     >
       Cancelar
     </button>

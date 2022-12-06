@@ -1,3 +1,6 @@
+import axios from "axios"
+import '../styles.css'
+
 type Params = {
   logradouro: string,
   numero: number
@@ -6,13 +9,17 @@ type Params = {
 const Aceitar = ({ logradouro, numero }: Params) => {
 
   const aceitarLocal = (logradouro: string, numero: number) => {
-    return
+    axios.post("localhost:3001/aceitar", {
+      logradouro: logradouro,
+      numero: numero,
+      ong: sessionStorage.getItem("email")
+    })
   }
 
   return (
     <button
       onClick={() => aceitarLocal(logradouro, numero)}
-      className="aceitar"
+      id="aceitar"
     >
       Aceitar
     </button>

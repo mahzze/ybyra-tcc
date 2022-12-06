@@ -116,7 +116,6 @@ app.post('/registroOng', (request, response) => {
         console.log("Inserido");
       });
   });
-  return response.redirect("/Login");
 });
 
 app.post('/registroPessoa', (request, response) => {
@@ -134,7 +133,6 @@ app.post('/registroPessoa', (request, response) => {
         if (err) throw err;
       });
   });
-  return response.redirect("/Login");
 });
 
 app.post('/registroLugar', (request) => {
@@ -142,22 +140,30 @@ app.post('/registroLugar', (request) => {
   const numero = parseInt(request.body.numero);
   const cep = request.body.cep;
   const email = request.body.email;
-  const arvores = parseInt(request.body.arvores);
 
-  let query = `INSERT INTO lugares (logradouro, numero, arvoresPlantadas, cep, usuarioEmail) VALUES (?, ?, ?, ?, ?)`;
-  db.query(query, [logradouro, numero, arvores, cep, email],
+  let query = `INSERT INTO lugares (logradouro, numero, cep, usuarioEmail) VALUES (?, ?, ?, ?)`;
+  db.query(query, [logradouro, numero, cep, email],
     (err, result) => {
       if (err) throw err;
-      console.log("Inserido");
+      console.log(result);
     });
 });
 
-app.get('/lugares', (request, response) => {
-  let query = "SELECT * FROM lugares";
-  db.query(query), (error, result) => {
-    if (error) throw error;
-    response.send({ regs: result });
-  }
+app.get('/showLugares', (request, response) => {
+  // let query = "select logradouro, numero, arvoresPlantadas, ongSelecionada, cep from lugares";
+
+  // db.query(query), (error, result) => {
+  //   if (error) throw error;
+  // console.log("foi100%")
+  // SAMPLE DE DADOS PARA TESTAR FRONT-END, TROCAR PELOS DADOS DO BANCO DE DADOS
+  response.send({
+    regs: [
+      { logradouro: "testeAceitar", numero: 7442, ongSelecionada: null, arvoresPlantadas: null, cep: "03535000" },
+      { logradouro: "testeFinalizar", numero: 284, ongSelecionada: "teste", arvoresPlantadas: null, cep: "03535000" },
+      { logradouro: "testeConcluida", numero: 500, ongSelecionada: "teste", arvoresPlantadas: 163, cep: "03535000" },
+    ]
+  });
+  // }
 })
 
 /* A: ACHO ESSE AQUI MEIO DESNECESSÁRIO
@@ -170,7 +176,7 @@ app.get('/lugares', (request, response) => {
 app.post('/aceitar', (request) => {
   let query = "UPDATE lugares SET ongSelecionada = ? WHERE logradouro = ? AND numero = ?";
   let logradouro = request.body.logradouro;
-  let numero = request.body.numero;
+  let numero = parseInt(request.body.numero);
   let ong = request.body.ong;
 
   db.query(query, [ong, logradouro, numero], (err, result) => {
@@ -182,7 +188,7 @@ app.post('/aceitar', (request) => {
 app.post('/finalizar', (request) => {
   let query = "UPDATE lugares SET arvoresPlantadas = ? WHERE logradouro = ? AND numero = ?";
   let logradouro = request.body.logradouro;
-  let numero = request.body.numero;
+  let numero = parseInt(request.body.numero);
   let arvoresPlantadas = request.body.arvoresPlantadas;
 
   db.query(query, [arvoresPlantadas, logradouro, numero],
@@ -195,7 +201,7 @@ app.post('/finalizar', (request) => {
 app.post('/cancelar', (request) => {
   let query = "DELETE FROM lugares WHERE logradouro = ? AND numero = ?"
   let lugar = request.body.logradouro
-  let numero = request.body.numero
+  let numero = parseInt(request.body.numero)
 
   db.query(query, [lugar, numero],
     (err, result) => {
@@ -206,6 +212,7 @@ app.post('/cancelar', (request) => {
 
 app.get('/contar', (request, response) => {
   let query = "SELECT SUM(arvoresPlantadas) FROM lugares";
+
   db.query(query), (err, result) => {
     if (err) throw err;
     response.send(result);
