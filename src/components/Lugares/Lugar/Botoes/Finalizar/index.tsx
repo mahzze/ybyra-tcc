@@ -1,26 +1,23 @@
 import axios from "axios"
 import '../styles.css'
 import { useState } from "react"
+import Params from '../Params'
 import FormFinalizar from './FormFinalizar'
-
-type Params = {
-  logradouro: string,
-  numero: number
-}
 
 const Finalizar = ({ logradouro, numero }: Params) => {
 
   const [isFormOpen, setIsFormOpen] = useState(false)
 
   const finalizarLocal = (logradouro: string, numero: number) => {
-    axios.post("/finalizar", {
+    axios.post("http://localhost:3001/finalizar", {
       logradouro: logradouro,
       numero: numero
-    });
+    })
+    window.location.reload();
   }
 
   const openFinalizar = () => {
-
+    setIsFormOpen(true)
     return (
       <FormFinalizar
         isOpen={isFormOpen}

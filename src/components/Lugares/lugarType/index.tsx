@@ -3,7 +3,7 @@ type lugar = {
   numero: number,
   ongSelecionada: string | null,
   arvoresPlantadas: number | null,
-  cep: string
+  cep: string,
 }
 
 export default lugar;

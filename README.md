@@ -13,8 +13,9 @@
 - [x] Refresh automático dos links
 - [X] Redirecionar para a página `login` após realizar o cadastro, e da `login` para as páginas específicas dos tipos de usuário 
 - [x] Consertar o reload 
-- [ ] Consertar os requests de `/lugares` e `/contar`
-- [ ] Fazer as funções de aceitar, cancelar e finalizar lugar
+- [X] Consertar os requests de `/lugares` e `/contar`
+- [X] Fazer as funções de aceitar, cancelar e finalizar lugar
+- [X] Reload do conteudo ao apertar os botões de aceitar, cancelar ou finalizar
 - [ ] Completar o front-end
 - [ ] Fragmentar a `src/components/Server/` em arquivos menores para facilitar a manutenção
 . automação de emails <br/>

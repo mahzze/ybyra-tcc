@@ -1,19 +1,16 @@
 import axios from "axios"
 import '../styles.css'
-
-type Params = {
-  logradouro: string,
-  numero: number
-}
+import Params from '../Params'
 
 const Aceitar = ({ logradouro, numero }: Params) => {
 
   const aceitarLocal = (logradouro: string, numero: number) => {
-    axios.post("localhost:3001/aceitar", {
+    axios.post("http://localhost:3001/aceitar", {
       logradouro: logradouro,
       numero: numero,
       ong: sessionStorage.getItem("email")
     })
+    window.location.reload();
   }
 
   return (

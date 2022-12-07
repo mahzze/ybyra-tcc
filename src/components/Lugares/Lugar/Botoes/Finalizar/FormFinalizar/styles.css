@@ -12,3 +12,10 @@
    justify-content: center;
    align-items: center;
 }
+
+.form {
+  background: #fff;
+  box-shadow: 0 0 12px rgba(80,80,80, .6);
+  width: 50vw;
+  height: 50vh; 
+}

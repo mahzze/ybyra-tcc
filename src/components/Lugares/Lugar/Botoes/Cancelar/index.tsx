@@ -1,10 +1,6 @@
 import axios from "axios"
 import '../styles.css'
-
-type Params = {
-  logradouro: string,
-  numero: number
-}
+import Params from '../Params'
 
 const Cancelar = ({ logradouro, numero }: Params) => {
 
@@ -13,6 +9,7 @@ const Cancelar = ({ logradouro, numero }: Params) => {
       logradouro: logradouro,
       numero: numero
     })
+    window.location.reload();
   }
 
   return (

@@ -3,13 +3,10 @@ import lugar from '../lugarType';
 import Aceitar from './Botoes/Aceitar';
 import Cancelar from './Botoes/Cancelar';
 import Finalizar from './Botoes/Finalizar';
-import Axios from 'axios';
 
 const Lugar = ({ logradouro, numero, ongSelecionada, arvoresPlantadas }: lugar) => {
   if (ongSelecionada == null) ongSelecionada = "N/a";
   if (arvoresPlantadas == null) arvoresPlantadas = 0;
-
-  Axios.defaults.withCredentials = true;
 
   return (
     <section className="lugar">

@@ -28,7 +28,7 @@ export default function LugarRegistro() {
         <input type="number" min={0} onChange={(event) => (setNumero(event.target.value))} required />
 
         <label>CEP</label>
-        <input type="text" maxLength={11} onChange={(event) => (setCep(event.target.value))} />
+        <input type="text" maxLength={8} onChange={(event) => (setCep(event.target.value))} />
 
         <button type="submit" onClick={registroLugar}> Registrar </button>
       </div>

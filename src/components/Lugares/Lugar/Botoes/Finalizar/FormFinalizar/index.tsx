@@ -7,7 +7,7 @@ type Params = {
   clique: () => void
 }
 
-const portal = document.getElementById("root");
+const portal = document.getElementById("portal");
 
 const FormFinalizar = ({ isOpen, close, clique }: Params) => {
   if (!isOpen) return <div className="ta aqui">AAAAAAAAAA</div>;

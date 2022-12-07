@@ -163,19 +163,17 @@ app.get('/showLugares', (request, response) => {
   })
 })
 
-app.post('/aceitar', (request) => {
+app.post('/aceitar', (request, response) => {
   let query = "UPDATE lugares SET ongSelecionada = ? WHERE logradouro = ? AND numero = ?";
   let logradouro = request.body.logradouro;
   let numero = parseInt(request.body.numero);
   let ong = request.body.ong;
 
-  db.query(query, [ong, logradouro, numero], (err, result) => {
-    if (err) throw err;
-    console.log("local aceito por : " + ong)
-  })
+  db.query(query, [ong, logradouro, numero])
+
 })
 
-app.post('/finalizar', (request) => {
+app.post('/finalizar', (request, response) => {
   let query = "UPDATE lugares SET arvoresPlantadas = ? WHERE logradouro = ? AND numero = ?";
   let logradouro = request.body.logradouro;
   let numero = parseInt(request.body.numero);
@@ -188,7 +186,7 @@ app.post('/finalizar', (request) => {
     })
 })
 
-app.post('/cancelar', (request) => {
+app.post('/cancelar', (request, response) => {
   let query = "DELETE FROM lugares WHERE logradouro = ? AND numero = ?"
   let lugar = request.body.logradouro
   let numero = parseInt(request.body.numero)
@@ -196,18 +194,24 @@ app.post('/cancelar', (request) => {
   db.query(query, [lugar, numero],
     (err, result) => {
       if (err) throw err;
-      console.log(result)
     });
 })
 
 app.get('/contar', (request, response) => {
   let query = "SELECT SUM(arvoresPlantadas) FROM lugares WHERE arvoresPlantadas > 0";
+  let count = 0;
 
-  db.query(query), (err, result) => {
-    if (err) throw err;
-    console.log("contador fez pegou os dados")
-    response.send(result);
-  }
+  // codigo abaixo não ta indo
+  let sqlQuery = db.query(query)
+  sqlQuery.on('end', (row) => {
+    console.log(row)
+    return response.send(JSON.parse(JSON.stringify(row)))
+  })
+  //     let data = JSON.parse(JSON.stringify(row))
+  //     console.log(data)
+  //     count += data.arvoresPlantadas
+  //   })
+  //   sqlQuery.on('end', response.send(count))
 })
 
 app.listen(3001, () => { console.log('Servidor 3001') });

@@ -37,8 +37,8 @@ export default function Login() {
       navigate('/RegistroLugar');
       window.location.reload();
       <>
-      <AnimatePresence
-      initial={false}/>
+        <AnimatePresence
+          initial={false} />
       </>
     }
 
@@ -59,8 +59,8 @@ export default function Login() {
       navigate('/Lugares');
       window.location.reload();
       <>
-      <AnimatePresence
-      initial={false}/>
+        <AnimatePresence
+          initial={false} />
       </>
     }
   }
@@ -106,7 +106,6 @@ export default function Login() {
 
         <button onClick={login}> Login </button>
 
-        <h2>{loginStatus}</h2>
       </div>
     </>
   );
