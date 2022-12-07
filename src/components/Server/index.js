@@ -151,7 +151,7 @@ app.post('/registroLugar', (request) => {
 app.get('/showLugares', (request, response) => {
   let query = "select logradouro, numero, arvoresPlantadas, ongSelecionada, cep from lugares";
   let sqlQuery = db.query(query)
-  var arr = new Array()
+  var arr = []
 
   sqlQuery.on('result', (row) => {
     let data = JSON.parse(JSON.stringify(row))
@@ -177,7 +177,7 @@ app.post('/finalizar', (request, response) => {
   let query = "UPDATE lugares SET arvoresPlantadas = ? WHERE logradouro = ? AND numero = ?";
   let logradouro = request.body.logradouro;
   let numero = parseInt(request.body.numero);
-  let arvoresPlantadas = request.body.arvoresPlantadas;
+  let arvoresPlantadas = parseInt(request.body.arvoresPlantadas);
 
   db.query(query, [arvoresPlantadas, logradouro, numero],
     (err, result) => {
@@ -195,23 +195,6 @@ app.post('/cancelar', (request, response) => {
     (err, result) => {
       if (err) throw err;
     });
-})
-
-app.get('/contar', (request, response) => {
-  let query = "SELECT SUM(arvoresPlantadas) FROM lugares WHERE arvoresPlantadas > 0";
-  let count = 0;
-
-  // codigo abaixo não ta indo
-  let sqlQuery = db.query(query)
-  sqlQuery.on('end', (row) => {
-    console.log(row)
-    return response.send(JSON.parse(JSON.stringify(row)))
-  })
-  //     let data = JSON.parse(JSON.stringify(row))
-  //     console.log(data)
-  //     count += data.arvoresPlantadas
-  //   })
-  //   sqlQuery.on('end', response.send(count))
 })
 
 app.listen(3001, () => { console.log('Servidor 3001') });

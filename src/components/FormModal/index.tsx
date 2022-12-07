@@ -35,8 +35,7 @@ type FormUser = {
 
 const FormModal = ({ text, isOpen, close, user, setUser }: FormUser) => {
   const portal = document.getElementById("root");
-  if (portal === null || isOpen === false) return null
-
+  if (portal === null || isOpen === false) return (null)
 
   return (
     ReactDOM.createPortal(

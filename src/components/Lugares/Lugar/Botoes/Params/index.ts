@@ -1,6 +1,7 @@
 type Params = {
   logradouro: string,
-  numero: number
+  numero: number,
+  arvoresPlantadas?: number
 }
 
 export default Params

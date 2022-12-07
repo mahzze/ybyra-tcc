@@ -13,9 +13,13 @@
    align-items: center;
 }
 
-.form {
-  background: #fff;
-  box-shadow: 0 0 12px rgba(80,80,80, .6);
-  width: 50vw;
-  height: 50vh; 
+.modal{
+  width: clamp(40vw, 700px, 80%);
+  background: rgba(230, 230, 230, 1);
+  border-radius:6px;
+  padding: 2rem;
+  text-align: center;
+  z-index: 100;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
 }

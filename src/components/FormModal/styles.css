@@ -12,10 +12,12 @@
    display: grid;
    grid-template-rows: 1fr 1fr;
 }
+
 .wrapper {
    display: grid;
    grid-template-columns: 9fr 1fr 9fr;
 }
+
 .wrapper button {
    width: 100%;
    background-color: #fff;

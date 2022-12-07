@@ -58,3 +58,83 @@ values (
   "pes@pes",
   "$2b$10$xe64Wne6yK6cmT6exbR2HOecNsu.LbniTov3ui7slOhzsoId.0e7a"
 );
+
+INSERT INTO lugares (
+  usuarioEmail,
+  logradouro,
+  numero,
+  cep
+) 
+VALUES
+  (
+    "pes@pes",
+    "Av Paulista",
+    9924,
+    "00000000"
+  ),
+  (
+  "pes@pes",
+  "Av Paulista",
+  9924,
+  "00000000"
+  ),
+  (
+  "pes@pes",
+  "Liberdade",
+  123,
+  "00000000"
+  ),
+  (
+  "pes@pes",
+  "Paraíso",
+  666,
+  "00000000"
+  ),
+  (
+  "pes@pes",
+  "Av Dr Bernardino Brito Fonseca de Carvalho",
+  1773,
+  "03535000"
+  ),
+  (
+  "pes@pes",
+  "Av Sapopemba",
+  4002,
+  "89220000"
+  ),
+  (
+  "pes@pes",
+  "Rua Bactória",
+  38,
+  "00000000"
+  ),
+  (
+  "pes@pes",
+  "Mateo Martins Cebantos",
+  64,
+  "00000000"
+  ),
+  (
+  "pes@pes",
+  "Rua Parapuã",
+  912,
+  "00000000"
+  ),
+  (
+  "pes@pes",
+  "Av Paulista",
+  101,
+  "00000000"
+  ),
+  (
+  "pes@pes",
+  "Av Monte Serrat",
+  404,
+  "40450020"
+  ),
+  (
+  "pes@pes",
+  "Av Melo Freire",
+   2323,
+  "00000000"
+  );
