@@ -64,7 +64,6 @@ app.post('/loginOng', (request, res) => {
             request.session.userType = "ong";
             res.send(result);
           } else {
-            // confere o banco de dados, deve estar com o campo de senhas menor do que o certo (o certo é de 72 pra cima)
             res.send({ message: 'wrong combination' });
           }
         });
@@ -151,21 +150,16 @@ app.post('/registroLugar', (request) => {
 
 app.get('/showLugares', (request, response) => {
   let query = "select logradouro, numero, arvoresPlantadas, ongSelecionada, cep from lugares";
+  let results = []
+  let sqlQuery = db.query(query)
 
-  db.query(query), (error, result) => {
-    if (error) throw error;
-    console.log("foi100%")
-    response.send({ regs: result })
-  }
-  // SAMPLE DE DADOS PARA TESTAR FRONT-END, TROCAR PELOS DADOS DO BANCO DE DADOS
-  // response.send({
-  //   regs: [
-  //     { logradouro: "testeAceitar", numero: 7442, ongSelecionada: null, arvoresPlantadas: null, cep: "03535000" },
-  //     { logradouro: "testeFinalizar", numero: 284, ongSelecionada: "teste", arvoresPlantadas: null, cep: "03535000" },
-  //     { logradouro: "testeConcluida", numero: 500, ongSelecionada: "teste", arvoresPlantadas: 163, cep: "03535000" },
-  //   ]
-  // });
-  // }
+  sqlQuery.on('result', (row) => {
+    console.log(row)
+    results.push(row) //o array results continua vazio msm com os .push, só arrumar 
+    //isso e terminar a função de finalizar que é sucesso
+  })
+
+  response.send({ regs: results })
 })
 
 app.post('/aceitar', (request) => {
