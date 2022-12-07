@@ -9,8 +9,8 @@ const animation = {
     opacity: 0
   },
   visible: {
-    x: '0',
-    y: '0',
+    x: '-16vw',
+    y: '-20vh',
     opacity: 1,
     transition: {
       duration: 0.4,
@@ -41,13 +41,19 @@ const FormFinalizar = ({ isOpen, close, clique, arvores, setArvores }: Params) =
 
   return ReactDOM.createPortal(
     <section className="overlay">
-      <motion.section className="modal">
-        <label>Digite a quantia de árvores plantadas
+      <motion.section 
+       variants={animation}
+       initial="hidden"
+       animate="visible"
+       exit="exit"
+      className="modal"
+      >
+        <label>Digite a quantia de árvores plantadas<br/>
           <input id="inpArvores" type="number" onChange={(e) => setArvores(e.target.value)} />
         </label>
         <section className="botoes">
-          <button className="finalizar" onClick={clique}>Finalizar</button>
-          <button className="cancelar" onClick={close}>Cancelar</button>
+          <button id="finalizar" onClick={clique}>Inserir</button>
+          <button id="cancelar" onClick={close}>Sair</button>
         </section>
       </motion.section>
     </section>

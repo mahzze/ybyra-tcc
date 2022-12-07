@@ -60,7 +60,6 @@ const FormModal = ({ text, isOpen, close, user, setUser }: FormUser) => {
               >
                 ONG
               </button>
-              <div></div>
               <button onClick={() => {
                 setUser("pessoa");
                 close();

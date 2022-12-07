@@ -4,6 +4,7 @@
   --red:   #D21f3C;
   --white: #FAF9F6
 }
+
 #aceitar {
   border-radius: 14px;
   border: var(--seafoam-green) 3px solid;
@@ -47,4 +48,8 @@
   transform: scale(1.15);
   background: var(--red);
   color: var(--white) 
+}
+
+#finalizar, #cancelar, #aceitar {
+  height: 30%;
 }

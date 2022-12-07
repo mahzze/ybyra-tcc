@@ -1,25 +1,37 @@
+@import "../../styles.css";
+
 .overlay {
-   position: absolute;
-   left: 0;
-   top: 0;
-   right: 0;
-   bottom: 0;
-   min-height: 100vh;
-   min-width: 100vw;
-   backdrop-filter: blur(4px);
-   z-index: 10;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 100%;
+  min-width: 100%;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal{
-  width: clamp(40vw, 700px, 80%);
-  background: rgba(230, 230, 230, 1);
-  border-radius:6px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: clamp(20vh, 256px, 50%);
+  width: clamp(20vw, 500px, 50%);
+  background:whitesmoke;
+  border-radius:10px;
   padding: 2rem;
   text-align: center;
   z-index: 100;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-shadow: 0 0 15px rgba(0,0,0,0.64);
+  -moz-box-shadow: 0 0 15px rgba(0,0,0,0.64);
+  box-shadow: 0 0 15px rgba(0,0,0,0.64);
 }
