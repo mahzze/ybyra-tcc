@@ -150,16 +150,17 @@ app.post('/registroLugar', (request) => {
 
 app.get('/showLugares', (request, response) => {
   let query = "select logradouro, numero, arvoresPlantadas, ongSelecionada, cep from lugares";
-  let results = []
   let sqlQuery = db.query(query)
+  var arr = new Array()
 
   sqlQuery.on('result', (row) => {
-    console.log(row)
-    results.push(row) //o array results continua vazio msm com os .push, só arrumar 
-    //isso e terminar a função de finalizar que é sucesso
+    let data = JSON.parse(JSON.stringify(row))
+    arr.push(data)
   })
 
-  response.send({ regs: results })
+  sqlQuery.on('end', () => {
+    return response.send({ regs: arr })
+  })
 })
 
 app.post('/aceitar', (request) => {
